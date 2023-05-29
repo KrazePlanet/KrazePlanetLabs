@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blind Time Based SQLI Lab</title>
+  </head>
+  <body>
+    <h1>Blind Time Based SQLI Lab</h1>
+    <form method="get" action="index.php">
+      <button type="button" data-toggle="collapse" data-target="#hint">Hint</button>
+      <div id="hint" class="collapse">
+        <br>
+<pre>
+Payload: XOR(if(now()=sysdate(),sleep(3*4),0))OR
+Vulnerable Parameter: username=
+</pre>
+      </div>
+      <br><br>
+      <label>Username:</label>
+      <input type="text" name="username" id="username" value="John">
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- Add Bootstrap CSS and JS files for the collapsible button to work -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
