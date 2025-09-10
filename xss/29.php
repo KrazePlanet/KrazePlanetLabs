@@ -4,32 +4,32 @@ if(isset($_GET["fname"]) && isset($_GET["lname"])){
     echo htmlspecialchars($_GET["lname"], ENT_QUOTES);
 }
 elseif(isset($_GET["id"])){
-    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus');
+    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus', '"c"+"onfirm(1)">', "&#x63;onfirm(1)>", "\u0063onfirm(1)>");
     $re = str_replace($arr, '', $_GET['id']);
     echo $re;
 }
 elseif(isset($_GET["cat"])){
-    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus');
+    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus', '"c"+"onfirm(1)">', "&#x63;onfirm(1)>", "\u0063onfirm(1)>");
     $re = str_replace($arr, '', $_GET['cat']);
     echo $re;
 }
 elseif(isset($_GET["page"])){
-    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus');
+    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus', '"c"+"onfirm(1)">', "&#x63;onfirm(1)>", "\u0063onfirm(1)>");
     $re = str_replace($arr, '', $_GET['page']);
     echo $re;
 }
 elseif(isset($_GET["number"])){
-    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus');
+    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus', '"c"+"onfirm(1)">', "&#x63;onfirm(1)>", "\u0063onfirm(1)>");
     $re = str_replace($arr, '', $_GET['number']);
     echo $re;
 }
 elseif(isset($_GET["page_id"])){
-    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus');
+    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus', '"c"+"onfirm(1)">', "&#x63;onfirm(1)>", "\u0063onfirm(1)>");
     $re = str_replace($arr, '', $_GET['page_id']);
     echo $re;
 }
 elseif(isset($_GET["categoryid"])){
-    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus');
+    $arr = array('details','alert','confirm','prompt','eval','details','ontoggle','onmousemove','onmouseover','script','Script','sCript','scRipt','scrIpt','scriPt','scripT','SCript','SCRipt','SCRIpt','SCRIPt','SCRIPT','script','img','image','svg','onfocus', '"c"+"onfirm(1)">', "&#x63;onfirm(1)>", "\u0063onfirm(1)>");
     $re = str_replace($arr, '', $_GET['categoryid']);
     echo $re;
 }
