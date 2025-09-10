@@ -177,7 +177,7 @@ if(isset($_GET["fname"]) && isset($_GET["lname"])){
     echo htmlspecialchars($_GET["lname"], ENT_QUOTES);
 }
 # use arjun tool to find hidden parameter
-# hint: you already find the parameter in lab no. 2
+# hint: you already found the parameter in lab no. 2
 </pre>
     </div>
   </div>
