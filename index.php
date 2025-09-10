@@ -67,7 +67,7 @@
         <div class="card">
           <a href="xss"><img src="img/1.jpg" class="card-img-top" alt="..."></a>
           <div class="card-body">
-            <h5 class="card-title">31 Labs</h5>
+            <h5 class="card-title">32 Labs</h5>
             <h6 class="card-title">XSS</h6>
           </div>
         </div>
