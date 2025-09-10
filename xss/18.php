@@ -1,14 +1,26 @@
+<?php
+if(isset($_GET["fname"]) && isset($_GET["lname"])){
+    echo htmlspecialchars($_GET["fname"], ENT_QUOTES);
+    $re = str_replace('script', '/', $_GET['lname']);
+    echo $re;
+  }
+  elseif(isset($_GET["ptu"])){
+    echo htmlspecialchars($_GET["ptu"], ENT_QUOTES);
+}
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About - KrazePlanetLabs</title>
+  <title>KrazePlanetLabs</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
-
 <body>
+
+    <!-- navbar -->
   <nav class="navbar navbar-expand-md navbar-dark"
     style="background-color: rgb(58, 63, 68); --darkreader-inline-bgcolor:#2f3335;" data-darkreader-inline-bgcolor="">
     <div class="container-fluid">
@@ -19,13 +31,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" style="color: rgb(107, 189, 69);" href="/">KrazePlanetLabs</a>
+            <a class="nav-link active" aria-current="page" style="color: rgb(107, 189, 69);"
+              href="/">KrazePlanetLabs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="about">About</a>
+            <a class="nav-link active" aria-current="page" href="../../about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="contact">Contact Us</a>
+            <a class="nav-link active" aria-current="page" href="../../contact">Contact Us</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
@@ -36,26 +49,32 @@
     </div>
   </nav>
 
-  <div class="container my-5">
-    <h1>About KrazePlanetLabs</h1>
-    <p>Welcome to <strong>KrazePlanetLabs</strong> – your go-to resource for learning web application penetration testing in a safe and practical environment.</p>
+  <!-- Accordion -->
+  <div class="card mt-3" style="width: 80%; margin-left: 10%; border-radius: 26px;">
+    <div class="card-header text-center">
+      Backend Source Code
+    </div>
+    <div class="card-body">
+<pre>
+if(isset($_GET["fname"]) && isset($_GET["lname"])){
+    echo htmlspecialchars($_GET["fname"], ENT_QUOTES);
+    $re = str_replace('script', '/', $_GET['lname']);
+    echo $re;
+}
+# use arjun tool to find hidden parameter
+</pre>
+    </div>
+  </div>
 
-    <p>I'm passionate about cybersecurity, especially web application security. The goal of <strong>KrazePlanetLabs</strong> is to provide hands-on labs where security enthusiasts, students, and professionals can learn, practice, and improve their skills in web penetration testing in a controlled environment.</p>
-
-    <p>This project offers intentionally vulnerable web applications designed to help you understand common web vulnerabilities such as:</p>
-    <ul>
-      <li>Cross-Site Scripting (XSS)</li>
-      <li>SQL Injection (SQLi)</li>
-      <li>Remote Code Execution (RCE)</li>
-      <li>Insecure Direct Object References (IDOR)</li>
-      <li>Server-Side Request Forgery (SSRF)</li>
-    </ul>
-
-    <p>The labs are structured to guide you through each vulnerability, explain how they work, and demonstrate how attackers exploit them.</p>
-
-    <p>🔗 Check out the full project here: <a href="https://github.com/rix4uni/KrazePlanetLabs" target="_blank">https://github.com/rix4uni/KrazePlanetLabs</a></p>
-
-    <p>Feel free to contribute or suggest improvements – together we can build a stronger and more secure web!</p>
+<!-- input fields -->
+  <div class="mt-3" style="width: 40%; margin-left: 10%;">
+    <form action="" method="get">
+      <label for="exampleFormControlTextarea1" class="form-label mt-3 mb-1">First Name</label>
+      <input class="form-control" type="text" placeholder="Enter input" aria-label="default input example" name="fname">
+      <label for="exampleFormControlTextarea1" class="form-label mt-3 mb-1">Last Name</label>
+      <input class="form-control" type="text" placeholder="Enter input" aria-label="default input example" name="lname">
+      <input type="submit" hidden />
+    </form>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
@@ -68,5 +87,4 @@
     integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
     crossorigin="anonymous"></script>
 </body>
-
 </html>
