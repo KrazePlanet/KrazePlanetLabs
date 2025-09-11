@@ -53,7 +53,7 @@
 
     <p>The labs are structured to guide you through each vulnerability, explain how they work, and demonstrate how attackers exploit them.</p>
 
-    <p>🔗 Check out the full project here: <a href="https://github.com/rix4uni/KrazePlanetLabs" target="_blank">https://github.com/rix4uni/KrazePlanetLabs</a></p>
+    <p>🔗 Check out the full project here: <a href="https://github.com/KrazePlanet/KrazePlanetLabs" target="_blank">https://github.com/KrazePlanet/KrazePlanetLabs</a></p>
 
     <p>Feel free to contribute or suggest improvements – together we can build a stronger and more secure web!</p>
   </div>

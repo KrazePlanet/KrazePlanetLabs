@@ -48,7 +48,7 @@
     </ul>
 
     <p>You can also open issues or discussions directly in the GitHub project repository:</p>
-    <p><a href="https://github.com/rix4uni/KrazePlanetLabs" target="_blank">https://github.com/rix4uni/KrazePlanetLabs</a></p>
+    <p><a href="https://github.com/KrazePlanet/KrazePlanetLabs" target="_blank">https://github.com/KrazePlanet/KrazePlanetLabs</a></p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
