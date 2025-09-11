@@ -7,6 +7,7 @@
   <title>KrazePlanetLabs</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="icon" href="favicon.ico" />
   <style>
     .card {
       transition: transform .30s;
@@ -67,7 +68,7 @@
         <div class="card">
           <a href="xss"><img src="img/1.jpg" class="card-img-top" alt="..."></a>
           <div class="card-body">
-            <h5 class="card-title">32 Labs</h5>
+            <h5 class="card-title">33 Labs</h5>
             <h6 class="card-title">XSS</h6>
           </div>
         </div>
