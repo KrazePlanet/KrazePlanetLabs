@@ -125,6 +125,7 @@
       <li><a href="31">Lab 31</a></li>
       <li><a href="32">Lab 32</a></li>
       <li><a href="33">Lab 33</a></li>
+      <li><a href="34">Lab 34</a></li>
     </ul>
 
     <div class="section-title">
