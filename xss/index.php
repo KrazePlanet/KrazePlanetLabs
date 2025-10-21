@@ -4,62 +4,327 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KrazePlanetLabs - XSS</title>
+  <title>KrazePlanetLabs - XSS Training Platform</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
     crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
   <style>
+    :root {
+      --primary-dark: #1a1f36;
+      --primary-light: #2d3748;
+      --accent-green: #48bb78;
+      --accent-blue: #4299e1;
+      --accent-orange: #ed8936;
+      --accent-red: #f56565;
+    }
+    
     body {
-      background-color: #f8f9fa;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--accent-green) !important;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-green) !important;
+    }
+
+    .hero-section {
+      background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), 
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231e293b"/><path d="M0 0L100 100M100 0L0 100" stroke="%23374151" stroke-width="1"/></svg>');
+      padding: 3rem 0;
+      border-bottom: 1px solid #2d3748;
+      margin-bottom: 2rem;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #48bb78, #4299e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: #cbd5e0;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .section-title {
       margin-top: 40px;
-      margin-bottom: 15px;
-      font-weight: bold;
-      font-size: 1.5rem;
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+      border-radius: 2px;
+    }
+
+    .stats-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 12px;
+      border: 1px solid #334155;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .stats-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent-green);
+    }
+
+    .category-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 12px;
+      border: 1px solid #334155;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent-green);
+    }
+
+    .category-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #334155;
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .category-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .category-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .category-desc {
+      color: #94a3b8;
+      font-size: 0.95rem;
     }
 
     .lab-list {
       list-style-type: none;
-      padding-left: 0;
+      padding: 0;
+      margin: 0;
     }
 
     .lab-list li {
-      padding: 12px 16px;
-      background-color: white;
-      border-radius: 5px;
-      margin-bottom: 8px;
-      transition: background-color .2s;
+      padding: 14px 18px;
+      background-color: rgba(30, 41, 59, 0.5);
+      border-bottom: 1px solid #334155;
+      transition: background-color 0.2s;
+      display: flex;
+      align-items: center;
+    }
+
+    .lab-list li:last-child {
+      border-bottom: none;
     }
 
     .lab-list li:hover {
-      background-color: #e9ecef;
+      background-color: rgba(56, 66, 89, 0.5);
     }
 
-    a {
+    .lab-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .lab-link {
       text-decoration: none;
-      color: #0d6efd;
+      color: #e2e8f0;
+      font-weight: 500;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .lab-link:hover {
+      color: var(--accent-green);
+    }
+
+    .difficulty-badge {
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-left: 10px;
+    }
+
+    .badge-low {
+      background-color: var(--accent-green);
+      color: #1a202c;
+    }
+
+    .badge-medium {
+      background-color: var(--accent-orange);
+      color: #1a202c;
+    }
+
+    .badge-high {
+      background-color: var(--accent-red);
+      color: #1a202c;
+    }
+
+    .search-box {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid #334155;
+      color: #e2e8f0;
+    }
+
+    .search-box:focus {
+      background: rgba(30, 41, 59, 0.9);
+      border-color: var(--accent-green);
+      box-shadow: 0 0 0 0.2rem rgba(72, 187, 120, 0.25);
+      color: #e2e8f0;
+    }
+
+    .btn-outline-success {
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+    }
+
+    .btn-outline-success:hover {
+      background-color: var(--accent-green);
+      border-color: var(--accent-green);
+      color: #1a202c;
+    }
+
+    .stats-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 10px;
+      padding: 1.5rem;
+      border: 1px solid #334155;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .stats-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .stats-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #48bb78, #4299e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stats-label {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .coming-soon {
+      padding: 3rem 1rem;
+      text-align: center;
+      color: #94a3b8;
+      font-style: italic;
+    }
+
+    .intro-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .intro-list li {
+      padding: 18px;
+      background-color: rgba(30, 41, 59, 0.5);
+      border-bottom: 1px solid #334155;
+      transition: all 0.2s;
+    }
+
+    .intro-list li:last-child {
+      border-bottom: none;
+    }
+
+    .intro-list li:hover {
+      background-color: rgba(56, 66, 89, 0.5);
+      transform: translateX(5px);
+    }
+
+    .intro-link {
+      text-decoration: none;
+      color: #e2e8f0;
+      font-weight: 500;
+      display: block;
+    }
+
+    .intro-link:hover {
+      color: var(--accent-green);
+    }
+
+    .intro-icon {
+      color: var(--accent-green);
+      margin-right: 12px;
+      font-size: 1.2rem;
     }
 
     footer {
       margin-top: 50px;
-      padding: 20px;
+      padding: 30px 0;
       text-align: center;
-      color: #6c757d;
+      color: #94a3b8;
+      border-top: 1px solid #334155;
     }
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark"
-    style="background-color: rgb(58, 63, 68);">
+  <nav class="navbar navbar-expand-md navbar-dark sticky-top" style="background-color: var(--primary-dark);">
     <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <i class="bi bi-shield-shaded me-2"></i>KrazePlanetLabs
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -69,86 +334,553 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" style="color: rgb(107, 189, 69);" href="/">KrazePlanetLabs</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link active" href="../about">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="../contact">Contact Us</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Reflected XSS</a></li>
+              <li><a class="dropdown-item" href="#">Stored XSS</a></li>
+              <li><a class="dropdown-item" href="#">DOM XSS</a></li>
+              <li><a class="dropdown-item" href="#">Blind XSS</a></li>
+            </ul>
+          </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control search-box me-2" type="search" placeholder="Search labs..." aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>
   </nav>
 
-  <div class="container mt-4">
-
-    <div class="section-title">
-      <span class="badge bg-success">Low Difficulty</span>
+  <div class="hero-section">
+    <div class="container text-center">
+      <h1 class="hero-title">XSS Training Platform</h1>
+      <p class="hero-subtitle">Master Cross-Site Scripting through hands-on labs designed to challenge and enhance your web application security skills.</p>
+      
+      <div class="row mt-5">
+        <div class="col-md-3 mb-4">
+          <div class="stats-card">
+            <div class="stats-number">70</div>
+            <div class="stats-label">Labs Available</div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="stats-card">
+            <div class="stats-number">4</div>
+            <div class="stats-label">XSS Categories</div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="stats-card">
+            <div class="stats-number">3</div>
+            <div class="stats-label">Difficulty Levels</div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="stats-card">
+            <div class="stats-number">100%</div>
+            <div class="stats-label">Hands-On</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <ul class="lab-list">
-      <li><a href="1">Lab 1</a></li>
-      <li><a href="2">Lab 2</a></li>
-      <li><a href="3">Lab 3</a></li>
-      <li><a href="4">Lab 4</a></li>
-      <li><a href="5">Lab 5</a></li>
-      <li><a href="6">Lab 6</a></li>
-      <li><a href="7">Lab 7</a></li>
-      <li><a href="8">Lab 8</a></li>
-      <li><a href="9">Lab 9</a></li>
-      <li><a href="10">Lab 10</a></li>
-      <li><a href="11">Lab 11</a></li>
-      <li><a href="12">Lab 12</a></li>
-      <li><a href="13">Lab 13</a></li>
-      <li><a href="14">Lab 14</a></li>
-      <li><a href="15">Lab 15</a></li>
-      <li><a href="16">Lab 16</a></li>
-      <li><a href="17">Lab 17</a></li>
-      <li><a href="18">Lab 18</a></li>
-      <li><a href="19">Lab 19</a></li>
-      <li><a href="20">Lab 20</a></li>
-      <li><a href="21">Lab 21</a></li>
-      <li><a href="22">Lab 22</a></li>
-      <li><a href="23">Lab 23</a></li>
-      <li><a href="24">Lab 24</a></li>
-      <li><a href="25">Lab 25</a></li>
-      <li><a href="26">Lab 26</a></li>
-      <li><a href="27">Lab 27</a></li>
-      <li><a href="28">Lab 28</a></li>
-      <li><a href="29">Lab 29</a></li>
-      <li><a href="30">Lab 30</a></li>
-      <li><a href="31">Lab 31</a></li>
-      <li><a href="32">Lab 32</a></li>
-      <li><a href="33">Lab 33</a></li>
-      <li><a href="34">Lab 34</a></li>
-    </ul>
-
-    <div class="section-title">
-      <span class="badge bg-warning text-dark">Medium Difficulty</span>
-    </div>
-    <ul class="lab-list">
-      <!-- <li><a href="3">Lab 3</a></li> -->
-      <!-- <li><a href="4">Lab 4</a></li> -->
-    </ul>
-
-    <div class="section-title">
-      <span class="badge bg-danger">High Difficulty</span>
-    </div>
-    <ul class="lab-list">
-      <!-- <li><a href="5">Lab 5</a></li> -->
-      <!-- <li><a href="6">Lab 6</a></li> -->
-    </ul>
-
   </div>
+
+  <div class="container mb-5">
+
+    <!-- XSS Introduction Categories Section -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="section-title">XSS Introduction Categories</h2>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-lg-12">
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon">📚</div>
+            <h3 class="category-title">XSS Theory & Fundamentals</h3>
+            <p class="category-desc">Learn the core concepts and types of Cross-Site Scripting vulnerabilities</p>
+          </div>
+          <ul class="intro-list">
+            <li>
+              <a href="../blogs/Reflected-XSS-Uncovered.html" class="intro-link">
+                <i class="bi bi-arrow-right-circle intro-icon"></i>
+                <strong>Reflected XSS Uncovered:</strong> The Non-Persistent Threat That Packs a Punch
+              </a>
+            </li>
+            <li>
+              <a href="../blogs/Stored-XSS-Exposed.html" class="intro-link">
+                <i class="bi bi-arrow-right-circle intro-icon"></i>
+                <strong>Stored XSS Exposed:</strong> The Persistent Threat That Keeps on Giving
+              </a>
+            </li>
+            <li>
+              <a href="../blogs/DOM-XSS-Decoded.html" class="intro-link">
+                <i class="bi bi-arrow-right-circle intro-icon"></i>
+                <strong>DOM XSS Decoded:</strong> The Client-Side Killer That Bypasses Server Defenses
+              </a>
+            </li>
+            <li>
+              <a href="../blogs/Blind-XSS.html" class="intro-link">
+                <i class="bi bi-arrow-right-circle intro-icon"></i>
+                <strong>Blind XSS:</strong> The Hidden Assassin in Your Application
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- XSS Lab Categories Section -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="section-title">XSS Lab Categories</h2>
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <!-- Reflected XSS Bootcamp -->
+      <div class="col-lg-12 mb-4">
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon">🔓</div>
+            <h3 class="category-title">Reflected XSS Bootcamp</h3>
+            <p class="category-desc">Instant Payload Challenges</p>
+          </div>
+          <ul class="lab-list">
+            <li>
+              <span class="lab-number">1</span>
+              <a href="reflected/1" class="lab-link">Lab 1: GET Parameter Reflection</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">2</span>
+              <a href="reflected/2" class="lab-link">Lab 2: Basic Filter Bypass</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">3</span>
+              <a href="reflected/3" class="lab-link">Lab 3: Multi-Filter Bypass Challenge</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">4</span>
+              <a href="reflected/4" class="lab-link">Lab 4: Extended Filter Bypass Challenge</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">5</span>
+              <a href="reflected/5" class="lab-link">Lab 5: Advanced Case-Sensitive Filter Bypass</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">6</span>
+              <a href="reflected/6" class="lab-link">Lab 6: Comprehensive Filter Bypass Challenge</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">7</span>
+              <a href="reflected/7" class="lab-link">Lab 7: Ultimate Filter Bypass Challenge</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">8</span>
+              <a href="reflected/8" class="lab-link">Lab 8: The Complete Ultimate Filter</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">9</span>
+              <a href="reflected/9" class="lab-link">Lab 9: Beyond Ultimate Filters</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">10</span>
+              <a href="reflected/10" class="lab-link">Lab 10: Character Replacement Filter Bypass</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">11</span>
+              <a href="reflected/11" class="lab-link">Lab 11: Alert Function Filter Bypass</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">12</span>
+              <a href="reflected/12" class="lab-link">Lab 12: Multi-Function Filter Bypass</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">13</span>
+              <a href="reflected/13" class="lab-link">Lab 13: Total Function Filter Bypass</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">14</span>
+              <a href="reflected/14" class="lab-link">Lab 14: Multiple XSS Challenges with Different Filtering Methods</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">15</span>
+              <a href="reflected/15" class="lab-link">Lab 15: Multiple XSS Challenges with Different Filtering Methods</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">16</span>
+              <a href="reflected/16" class="lab-link">Lab 16: Find the hidden parameter and bypass simple filtering</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">17</span>
+              <a href="reflected/17" class="lab-link">Lab 17: Test XSS across multiple parameters with different security levels</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">18</span>
+              <a href="reflected/18" class="lab-link">Lab 18: Test XSS with different filtering approaches in the same application</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">19</span>
+              <a href="reflected/19" class="lab-link">Lab 19: Test XSS with JavaScript function name filtering</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">20</span>
+              <a href="reflected/20" class="lab-link">Lab 20: Test XSS with complex transformation filters</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">21</span>
+              <a href="reflected/21" class="lab-link">Lab 21: Test XSS with curly brace replacement filtering</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">22</span>
+              <a href="reflected/22" class="lab-link">Lab 22: Test XSS against multiple different filtering techniques</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">23</span>
+              <a href="reflected/23" class="lab-link">Lab 23: Test XSS with unfiltered email parameter</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">24</span>
+              <a href="reflected/24" class="lab-link">Lab 24: Test XSS with blacklist-based filtering on id and search parameters</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">25</span>
+              <a href="reflected/25" class="lab-link">Lab 25: Test XSS with comprehensive case-variation blacklist filtering on search parameter</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">26</span>
+              <a href="reflected/26" class="lab-link">Lab 26: Test XSS with inconsistent encoding functions in HTML context</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">27</span>
+              <a href="reflected/27" class="lab-link">Lab 27: Test XSS with consistent blacklist filtering across multiple hidden parameters</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">28</span>
+              <a href="reflected/28" class="lab-link">Lab 28: Test XSS with extensive blacklist filtering across multiple parameters</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">29</span>
+              <a href="reflected/29" class="lab-link">Lab 29: Test XSS with comprehensive blacklist filtering that includes specific bypass attempt prevention</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">30</span>
+              <a href="reflected/30" class="lab-link">Lab 30: Find the one vulnerable parameter hidden among 30+ secure parameters</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">31</span>
+              <a href="reflected/31" class="lab-link">Lab 31: Test XSS with the most comprehensive bypass prevention ever implemented</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">32</span>
+              <a href="reflected/32" class="lab-link">Lab 32: Discover multiple hidden parameters and bypass advanced filtering</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">33</span>
+              <a href="reflected/33" class="lab-link">Lab 33: Discover multiple hidden parameters and bypass extensive encoding filters</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">34</span>
+              <a href="reflected/34" class="lab-link">Lab 34: Discover multiple hidden parameters and bypass extensive encoding filters</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    <div class="row mb-5">
+      <!-- Reflected XSS Bootcamp No Hints-->
+      <div class="col-lg-12 mb-4">
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon">🛡️</div>
+            <h3 class="category-title">Reflected XSS Bootcamp No Hints</h3>
+            <p class="category-desc">Instant Payload Challenges</p>
+          </div>
+          <ul class="lab-list">
+            <li>
+              <span class="lab-number">1</span>
+              <a href="oldreflected/1" class="lab-link">Lab 1</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">2</span>
+              <a href="oldreflected/2" class="lab-link">Lab 2</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">3</span>
+              <a href="oldreflected/3" class="lab-link">Lab 3</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">4</span>
+              <a href="oldreflected/4" class="lab-link">Lab 4</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">5</span>
+              <a href="oldreflected/5" class="lab-link">Lab 5</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">6</span>
+              <a href="oldreflected/6" class="lab-link">Lab 6</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">7</span>
+              <a href="oldreflected/7" class="lab-link">Lab 7</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">8</span>
+              <a href="oldreflected/8" class="lab-link">Lab 8</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">9</span>
+              <a href="oldreflected/9" class="lab-link">Lab 9</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">10</span>
+              <a href="oldreflected/10" class="lab-link">Lab 10</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">11</span>
+              <a href="oldreflected/11" class="lab-link">Lab 11</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">12</span>
+              <a href="oldreflected/12" class="lab-link">Lab 12</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">13</span>
+              <a href="oldreflected/13" class="lab-link">Lab 13</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">14</span>
+              <a href="oldreflected/14" class="lab-link">Lab 14</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">15</span>
+              <a href="oldreflected/15" class="lab-link">Lab 15</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">16</span>
+              <a href="oldreflected/16" class="lab-link">Lab 16</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">17</span>
+              <a href="oldreflected/17" class="lab-link">Lab 17</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">18</span>
+              <a href="oldreflected/18" class="lab-link">Lab 18</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">19</span>
+              <a href="oldreflected/19" class="lab-link">Lab 19</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">20</span>
+              <a href="oldreflected/20" class="lab-link">Lab 20</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">21</span>
+              <a href="oldreflected/21" class="lab-link">Lab 21</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">22</span>
+              <a href="oldreflected/22" class="lab-link">Lab 22</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">23</span>
+              <a href="oldreflected/23" class="lab-link">Lab 23</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">24</span>
+              <a href="oldreflected/24" class="lab-link">Lab 24</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">25</span>
+              <a href="oldreflected/25" class="lab-link">Lab 25</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">26</span>
+              <a href="oldreflected/26" class="lab-link">Lab 26</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">27</span>
+              <a href="oldreflected/27" class="lab-link">Lab 27</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">28</span>
+              <a href="oldreflected/28" class="lab-link">Lab 28</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">29</span>
+              <a href="oldreflected/29" class="lab-link">Lab 29</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">30</span>
+              <a href="oldreflected/30" class="lab-link">Lab 30</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">31</span>
+              <a href="oldreflected/31" class="lab-link">Lab 31</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">32</span>
+              <a href="oldreflected/32" class="lab-link">Lab 32</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">33</span>
+              <a href="oldreflected/33" class="lab-link">Lab 33</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">34</span>
+              <a href="oldreflected/34" class="lab-link">Lab 34</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Stored XSS Workshop -->
+      <div class="col-lg-12 mb-4">
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon">💾</div>
+            <h3 class="category-title">Stored XSS Workshop</h3>
+            <p class="category-desc">Persistent Attack Scenarios</p>
+          </div>
+          <div class="coming-soon">
+            <i class="bi bi-tools display-4 mb-3"></i>
+            <h4>Coming Soon</h4>
+            <p>Stored XSS labs are currently in development</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOM XSS Laboratory -->
+      <div class="col-lg-12 mb-4">
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon">🌐</div>
+            <h3 class="category-title">DOM XSS Laboratory</h3>
+            <p class="category-desc">Client-Side Manipulation Labs</p>
+          </div>
+          <div class="coming-soon">
+            <i class="bi bi-tools display-4 mb-3"></i>
+            <h4>Coming Soon</h4>
+            <p>DOM XSS labs are currently in development</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blind XSS Range -->
+      <div class="col-lg-12 mb-4">
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon">🎯</div>
+            <h3 class="category-title">Blind XSS Range</h3>
+            <p class="category-desc">Out-of-Band Detection Challenges</p>
+          </div>
+          <ul class="lab-list">
+            <li>
+              <span class="lab-number">1</span>
+              <a href="blind/1" class="lab-link">Lab 1: Discover vulnerabilities in project parameter and User-Agent header</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">2</span>
+              <a href="blind/2" class="lab-link">Lab 2: Discover vulnerabilities in project parameter and Referer header</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 KrazePlanetLabs - XSS Training Platform. All rights reserved.</p>
+      <p class="mb-0">Designed for educational purposes to enhance web application security skills.</p>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
 </body>
-
 </html>
