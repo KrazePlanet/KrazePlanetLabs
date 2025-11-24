@@ -4,6 +4,8 @@
 ```
 1. Install xampp
 2. clone this repo in C:\xampp\htdocs
+
+sudo sed -i 's/Require local/Require all granted/g' /opt/lampp/etc/extra/httpd-xampp.conf
 ```
 
  ## Website UI
