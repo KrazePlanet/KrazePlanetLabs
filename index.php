@@ -266,13 +266,13 @@
       <div class="row mt-5">
         <div class="col-md-3 mb-4">
           <div class="stats-card">
-            <div class="stats-number">91+</div>
+            <div class="stats-number">217+</div>
             <div class="stats-label">Labs Available</div>
           </div>
         </div>
         <div class="col-md-3 mb-4">
           <div class="stats-card">
-            <div class="stats-number">10</div>
+            <div class="stats-number">22</div>
             <div class="stats-label">Vulnerability Types</div>
           </div>
         </div>
@@ -301,7 +301,7 @@
           <div class="card">
             <img src="img/1.jpg" class="card-img-top" alt="XSS Labs">
             <div class="card-body">
-              <span class="lab-count">70 Labs</span>
+              <span class="lab-count">92 Labs</span>
               <h5 class="card-title">Cross-Site Scripting</h5>
               <h6 class="card-subtitle">XSS</h6>
             </div>
@@ -313,7 +313,7 @@
           <div class="card">
             <img src="img/2.jpg" class="card-img-top" alt="SQL Injection Labs">
             <div class="card-body">
-              <span class="lab-count">10 Labs</span>
+              <span class="lab-count">8 Labs</span>
               <h5 class="card-title">SQL Injection</h5>
               <h6 class="card-subtitle">SQLI</h6>
             </div>
@@ -325,7 +325,7 @@
           <div class="card">
             <img src="img/3.jpg" class="card-img-top" alt="LFI Labs">
             <div class="card-body">
-              <span class="lab-count">10 Lab</span>
+              <span class="lab-count">9 Lab</span>
               <h5 class="card-title">Local File Inclusion</h5>
               <h6 class="card-subtitle">LFI</h6>
             </div>
@@ -337,7 +337,7 @@
           <div class="card">
             <img src="img/4.jpg" class="card-img-top" alt="RCE Labs">
             <div class="card-body">
-              <span class="lab-count">1 Lab</span>
+              <span class="lab-count">5 Lab</span>
               <h5 class="card-title">Remote Code Execution</h5>
               <h6 class="card-subtitle">RCE</h6>
             </div>
@@ -346,10 +346,10 @@
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="ssti">
-          <div class="card coming-soon">
+          <div class="card">
             <img src="img/5.png" class="card-img-top" alt="SSTI Labs">
             <div class="card-body">
-              <span class="lab-count">0 Labs</span>
+              <span class="lab-count">5 Labs</span>
               <h5 class="card-title">Server-Side Template Injection</h5>
               <h6 class="card-subtitle">SSTI</h6>
             </div>
@@ -358,10 +358,10 @@
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="http_rs">
-          <div class="card coming-soon">
+          <div class="card">
             <img src="img/6.jpg" class="card-img-top" alt="HTTP Request Smuggling Labs">
             <div class="card-body">
-              <span class="lab-count">0 Labs</span>
+              <span class="lab-count">5 Labs</span>
               <h5 class="card-title">HTTP Request Smuggling</h5>
               <h6 class="card-subtitle">HTTP Request Smuggling</h6>
             </div>
@@ -370,10 +370,10 @@
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="injection">
-          <div class="card coming-soon">
+          <div class="card">
             <img src="img/7.png" class="card-img-top" alt="Command Injection Labs">
             <div class="card-body">
-              <span class="lab-count">0 Labs</span>
+              <span class="lab-count">5 Labs</span>
               <h5 class="card-title">Command Injection</h5>
               <h6 class="card-subtitle">Command Injection</h6>
             </div>
@@ -382,10 +382,10 @@
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="idor">
-          <div class="card coming-soon">
+          <div class="card">
             <img src="img/8.png" class="card-img-top" alt="IDOR Labs">
             <div class="card-body">
-              <span class="lab-count">0 Labs</span>
+              <span class="lab-count">10 Labs</span>
               <h5 class="card-title">Insecure Direct Object Reference</h5>
               <h6 class="card-subtitle">IDOR</h6>
             </div>
@@ -394,10 +394,10 @@
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3">
         <a href="redirect">
-          <div class="card coming-soon">
+          <div class="card">
             <img src="img/9.png" class="card-img-top" alt="Open Redirect Labs">
             <div class="card-body">
-              <span class="lab-count">0 Labs</span>
+              <span class="lab-count">5 Labs</span>
               <h5 class="card-title">Open Redirect</h5>
               <h6 class="card-subtitle">Open Redirect</h6>
             </div>
@@ -405,13 +405,181 @@
         </a>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-3">
-        <a href="directory_triversal">
-          <div class="card coming-soon">
+        <a href="directory_traversal">
+          <div class="card">
             <img src="img/10.jpg" class="card-img-top" alt="Directory Traversal Labs">
             <div class="card-body">
-              <span class="lab-count">0 Labs</span>
+              <span class="lab-count">5 Labs</span>
               <h5 class="card-title">Directory Traversal</h5>
               <h6 class="card-subtitle">Directory Traversal</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="xxe">
+          <div class="card">
+            <img src="img/11.jpg" class="card-img-top" alt="XXE Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">XML External Entity</h5>
+              <h6 class="card-subtitle">XXE</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="subdomain_takeovers">
+          <div class="card">
+            <img src="img/12.jpg" class="card-img-top" alt="Subdomain Takeover Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">Subdomain Takeovers</h5>
+              <h6 class="card-subtitle">Subdomain</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="ssrf">
+          <div class="card">
+            <img src="img/13.jpg" class="card-img-top" alt="SSRF Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">Server-Side Request Forgery</h5>
+              <h6 class="card-subtitle">SSRF</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="rfi">
+          <div class="card">
+            <img src="img/14.jpg" class="card-img-top" alt="RFI Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">Remote File Inclusion</h5>
+              <h6 class="card-subtitle">RFI</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="response_manipulation">
+          <div class="card">
+            <img src="img/15.jpg" class="card-img-top" alt="Response Manipulation Labs">
+            <div class="card-body">
+              <span class="lab-count">17 Labs</span>
+              <h5 class="card-title">Response Manipulation</h5>
+              <h6 class="card-subtitle">Response Manipulation</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="pollution">
+          <div class="card">
+            <img src="img/16.jpg" class="card-img-top" alt="Pollution Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">Prototype Pollution</h5>
+              <h6 class="card-subtitle">Pollution</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="otpbypass">
+          <div class="card">
+            <img src="img/17.jpg" class="card-img-top" alt="OTP Bypass Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">OTP Bypass</h5>
+              <h6 class="card-subtitle">OTP Bypass</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="htmli">
+          <div class="card">
+            <img src="img/18.jpg" class="card-img-top" alt="HTML Injection Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">HTML Injection</h5>
+              <h6 class="card-subtitle">HTMLi</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="fileupload">
+          <div class="card">
+            <img src="img/19.jpg" class="card-img-top" alt="File Upload Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">File Upload</h5>
+              <h6 class="card-subtitle">File Upload</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="csti">
+          <div class="card">
+            <img src="img/20.jpg" class="card-img-top" alt="CSTI Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">Client-Side Template Injection</h5>
+              <h6 class="card-subtitle">CSTI</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="csrf">
+          <div class="card">
+            <img src="img/21.jpg" class="card-img-top" alt="CSRF Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">Cross-Site Request Forgery</h5>
+              <h6 class="card-subtitle">CSRF</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="cors">
+          <div class="card">
+            <img src="img/22.jpg" class="card-img-top" alt="CORS Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">Cross-Origin Resource Sharing</h5>
+              <h6 class="card-subtitle">CORS</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="clickjacking">
+          <div class="card">
+            <img src="img/23.jpg" class="card-img-top" alt="Clickjacking Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">Clickjacking</h5>
+              <h6 class="card-subtitle">Clickjacking</h6>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <a href="business_logic">
+          <div class="card">
+            <img src="img/24.jpg" class="card-img-top" alt="Business Logic Labs">
+            <div class="card-body">
+              <span class="lab-count">5 Labs</span>
+              <h5 class="card-title">Business Logic Flaws</h5>
+              <h6 class="card-subtitle">Business Logic</h6>
             </div>
           </div>
         </a>

@@ -301,17 +301,6 @@
           <li class="nav-item">
             <a class="nav-link active" href="../contact">Contact Us</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Reflected XSS</a></li>
-              <li><a class="dropdown-item" href="#">Stored XSS</a></li>
-              <li><a class="dropdown-item" href="#">DOM XSS</a></li>
-              <li><a class="dropdown-item" href="#">Blind XSS</a></li>
-            </ul>
-          </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control search-box me-2" type="search" placeholder="Search labs..." aria-label="Search">
@@ -329,7 +318,7 @@
       <div class="row mt-5">
         <div class="col-md-3 mb-4">
           <div class="stats-card">
-            <div class="stats-number">10</div>
+            <div class="stats-number">9</div>
             <div class="stats-label">Labs Available</div>
           </div>
         </div>
@@ -407,11 +396,6 @@
         <li>
           <span class="lab-number">9</span>
           <a href="9" class="lab-link">Lab 9</a>
-          <span class="difficulty-badge badge-low">Low</span>
-        </li>
-        <li>
-          <span class="lab-number">10</span>
-          <a href="10" class="lab-link">Lab 10</a>
           <span class="difficulty-badge badge-low">Low</span>
         </li>
       </ul>

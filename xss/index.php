@@ -339,17 +339,6 @@
           <li class="nav-item">
             <a class="nav-link active" href="../contact">Contact Us</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Reflected XSS</a></li>
-              <li><a class="dropdown-item" href="#">Stored XSS</a></li>
-              <li><a class="dropdown-item" href="#">DOM XSS</a></li>
-              <li><a class="dropdown-item" href="#">Blind XSS</a></li>
-            </ul>
-          </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control search-box me-2" type="search" placeholder="Search labs..." aria-label="Search">
@@ -367,7 +356,7 @@
       <div class="row mt-5">
         <div class="col-md-3 mb-4">
           <div class="stats-card">
-            <div class="stats-number">70</div>
+            <div class="stats-number">92</div>
             <div class="stats-label">Labs Available</div>
           </div>
         </div>
@@ -448,6 +437,29 @@
     </div>
 
     <div class="row mb-5">
+      <!-- XSS Fundamentals -->
+      <div class="col-lg-12 mb-4">
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon">🚀</div>
+            <h3 class="category-title">Fundamental XSS Warmups</h3>
+            <p class="category-desc">A fast on-ramp before you dive into the bootcamps</p>
+          </div>
+          <ul class="lab-list">
+            <li>
+              <span class="lab-number">1</span>
+              <a href="1" class="lab-link">Lab 1: Simple input reflection</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">2</span>
+              <a href="2" class="lab-link">Lab 2: Basic attribute context</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <!-- Reflected XSS Bootcamp -->
       <div class="col-lg-12 mb-4">
         <div class="category-card">
@@ -823,11 +835,96 @@
             <h3 class="category-title">Stored XSS Workshop</h3>
             <p class="category-desc">Persistent Attack Scenarios</p>
           </div>
-          <div class="coming-soon">
-            <i class="bi bi-tools display-4 mb-3"></i>
-            <h4>Coming Soon</h4>
-            <p>Stored XSS labs are currently in development</p>
+          <ul class="lab-list">
+            <li>
+              <span class="lab-number">1</span>
+              <a href="stored/1" class="lab-link">Lab 1: Comment board payload storage</a>
+              <span class="difficulty-badge badge-medium">Medium</span>
+            </li>
+            <li>
+              <span class="lab-number">2</span>
+              <a href="stored/2" class="lab-link">Lab 2: Guestbook payload replay</a>
+              <span class="difficulty-badge badge-medium">Medium</span>
+            </li>
+            <li>
+              <span class="lab-number">3</span>
+              <a href="stored/3" class="lab-link">Lab 3: Persistent payload across profiles</a>
+              <span class="difficulty-badge badge-medium">Medium</span>
+            </li>
+            <li>
+              <span class="lab-number">4</span>
+              <a href="stored/4" class="lab-link">Lab 4: Multi-field storage vectors</a>
+              <span class="difficulty-badge badge-medium">Medium</span>
+            </li>
+            <li>
+              <span class="lab-number">5</span>
+              <a href="stored/5" class="lab-link">Lab 5: Escalating stored payload</a>
+              <span class="difficulty-badge badge-medium">Medium</span>
+            </li>
+            <li>
+              <span class="lab-number">6</span>
+              <a href="stored/realworld/1" class="lab-link">Real-World 1: Bulletin board compromise</a>
+              <span class="difficulty-badge badge-high">High</span>
+            </li>
+            <li>
+              <span class="lab-number">7</span>
+              <a href="stored/realworld/2" class="lab-link">Real-World 2: Admin panel takeover</a>
+              <span class="difficulty-badge badge-high">High</span>
+            </li>
+            <li>
+              <span class="lab-number">8</span>
+              <a href="stored/realworld/3" class="lab-link">Real-World 3: Notification feed poison</a>
+              <span class="difficulty-badge badge-high">High</span>
+            </li>
+            <li>
+              <span class="lab-number">9</span>
+              <a href="stored/realworld/4" class="lab-link">Real-World 4: Helpdesk ticket pivot</a>
+              <span class="difficulty-badge badge-high">High</span>
+            </li>
+            <li>
+              <span class="lab-number">10</span>
+              <a href="stored/realworld/5" class="lab-link">Real-World 5: Cross-account persistence</a>
+              <span class="difficulty-badge badge-high">High</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Self XSS Arena -->
+      <div class="col-lg-12 mb-4">
+        <div class="category-card">
+          <div class="category-header">
+            <div class="category-icon">🪞</div>
+            <h3 class="category-title">Self XSS Arena</h3>
+            <p class="category-desc">Social engineering meets client-side scripting</p>
           </div>
+          <ul class="lab-list">
+            <li>
+              <span class="lab-number">1</span>
+              <a href="self/1" class="lab-link">Lab 1: Console injection bait</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">2</span>
+              <a href="self/2" class="lab-link">Lab 2: Clipboard assisted payload</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">3</span>
+              <a href="self/3" class="lab-link">Lab 3: Chat window lure</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">4</span>
+              <a href="self/4" class="lab-link">Lab 4: Copy/paste payload delivery</a>
+              <span class="difficulty-badge badge-low">Low</span>
+            </li>
+            <li>
+              <span class="lab-number">5</span>
+              <a href="self/5" class="lab-link">Lab 5: Convincing phishing scenario</a>
+              <span class="difficulty-badge badge-medium">Medium</span>
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -839,11 +936,33 @@
             <h3 class="category-title">DOM XSS Laboratory</h3>
             <p class="category-desc">Client-Side Manipulation Labs</p>
           </div>
-          <div class="coming-soon">
-            <i class="bi bi-tools display-4 mb-3"></i>
-            <h4>Coming Soon</h4>
-            <p>DOM XSS labs are currently in development</p>
-          </div>
+          <ul class="lab-list">
+            <li>
+              <span class="lab-number">1</span>
+              <a href="dom/1" class="lab-link">Lab 1: URL fragment sink discovery</a>
+              <span class="difficulty-badge badge-medium">Medium</span>
+            </li>
+            <li>
+              <span class="lab-number">2</span>
+              <a href="dom/2" class="lab-link">Lab 2: Query parameter DOM sync</a>
+              <span class="difficulty-badge badge-medium">Medium</span>
+            </li>
+            <li>
+              <span class="lab-number">3</span>
+              <a href="dom/3" class="lab-link">Lab 3: Hash-based router bypass</a>
+              <span class="difficulty-badge badge-medium">Medium</span>
+            </li>
+            <li>
+              <span class="lab-number">4</span>
+              <a href="dom/4" class="lab-link">Lab 4: Dangerous innerHTML assignment</a>
+              <span class="difficulty-badge badge-medium">Medium</span>
+            </li>
+            <li>
+              <span class="lab-number">5</span>
+              <a href="dom/5" class="lab-link">Lab 5: Template literal gadget chain</a>
+              <span class="difficulty-badge badge-high">High</span>
+            </li>
+          </ul>
         </div>
       </div>
 

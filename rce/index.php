@@ -4,10 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KrazePlanetLabs - RCE Training Platform</title>
+  <title>KrazePlanetLabs - RCE Labs</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-    crossorigin="anonymous">
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
   <style>
@@ -45,7 +44,7 @@
     .hero-section {
       background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), 
                   url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231e293b"/><path d="M0 0L100 100M100 0L0 100" stroke="%23374151" stroke-width="1"/></svg>');
-      padding: 3rem 0;
+      padding: 2rem 0;
       border-bottom: 1px solid #2d3748;
       margin-bottom: 2rem;
     }
@@ -56,21 +55,19 @@
       background: linear-gradient(90deg, #48bb78, #4299e1);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     .hero-subtitle {
       font-size: 1.2rem;
       color: #cbd5e0;
-      max-width: 600px;
-      margin: 0 auto;
     }
 
     .section-title {
-      margin-top: 40px;
-      margin-bottom: 25px;
+      margin-top: 30px;
+      margin-bottom: 20px;
       font-weight: 700;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       position: relative;
       padding-bottom: 10px;
     }
@@ -86,129 +83,70 @@
       border-radius: 2px;
     }
 
-    .stats-card {
+    .card {
       background: rgba(30, 41, 59, 0.7);
       border-radius: 12px;
       border: 1px solid #334155;
-      transition: all 0.3s ease;
-      overflow: hidden;
-      height: 100%;
+      color: #e2e8f0;
+      transition: all 0.3s;
     }
 
-    .stats-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      border-color: var(--accent-green);
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
-    .category-card {
-      background: rgba(30, 41, 59, 0.7);
-      border-radius: 12px;
-      border: 1px solid #334155;
-      transition: all 0.3s ease;
-      overflow: hidden;
-      height: 100%;
-      margin-bottom: 2rem;
-    }
-
-    .category-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      border-color: var(--accent-green);
-    }
-
-    .category-header {
-      padding: 1.5rem;
-      border-bottom: 1px solid #334155;
+    .card-header {
       background: rgba(15, 23, 42, 0.5);
-    }
-
-    .category-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .category-title {
-      font-size: 1.4rem;
+      border-bottom: 1px solid #334155;
       font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .category-desc {
-      color: #94a3b8;
-      font-size: 0.95rem;
+      padding: 1rem 1.5rem;
     }
 
     .lab-list {
       list-style-type: none;
-      padding: 0;
-      margin: 0;
+      padding-left: 0;
     }
 
     .lab-list li {
-      padding: 14px 18px;
-      background-color: rgba(30, 41, 59, 0.5);
-      border-bottom: 1px solid #334155;
-      transition: background-color 0.2s;
-      display: flex;
-      align-items: center;
-    }
-
-    .lab-list li:last-child {
-      border-bottom: none;
+      padding: 1rem 1.5rem;
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      transition: all 0.3s;
+      border: 1px solid #334155;
     }
 
     .lab-list li:hover {
-      background-color: rgba(56, 66, 89, 0.5);
-    }
-
-    .lab-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      background: var(--primary-light);
-      border-radius: 50%;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-right: 12px;
-      flex-shrink: 0;
+      background: rgba(30, 41, 59, 0.9);
+      transform: translateX(5px);
+      border-color: var(--accent-green);
     }
 
     .lab-link {
       text-decoration: none;
       color: #e2e8f0;
       font-weight: 500;
-      flex-grow: 1;
       display: flex;
       align-items: center;
+      justify-content: space-between;
     }
 
     .lab-link:hover {
       color: var(--accent-green);
+      text-decoration: none;
+    }
+
+    .lab-icon {
+      color: var(--accent-green);
+      font-size: 1.2rem;
     }
 
     .difficulty-badge {
-      font-size: 0.7rem;
-      padding: 4px 8px;
-      border-radius: 4px;
-      margin-left: 10px;
-    }
-
-    .badge-low {
-      background-color: var(--accent-green);
-      color: #1a202c;
-    }
-
-    .badge-medium {
-      background-color: var(--accent-orange);
-      color: #1a202c;
-    }
-
-    .badge-high {
-      background-color: var(--accent-red);
-      color: #1a202c;
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 600;
     }
 
     .search-box {
@@ -235,48 +173,50 @@
       color: #1a202c;
     }
 
-    .stats-card {
+    .info-card {
       background: rgba(30, 41, 59, 0.7);
-      border-radius: 10px;
-      padding: 1.5rem;
+      border-radius: 12px;
       border: 1px solid #334155;
-      text-align: center;
-      transition: transform 0.3s;
+      padding: 1.5rem;
+      margin-top: 2rem;
     }
 
-    .stats-card:hover {
-      transform: translateY(-3px);
+    .info-title {
+      color: var(--accent-green);
+      font-weight: 600;
+      margin-bottom: 1rem;
     }
 
-    .stats-number {
-      font-size: 2.5rem;
-      font-weight: 700;
+    .attack-vector {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 8px;
+      padding: 1rem;
       margin-bottom: 0.5rem;
-      background: linear-gradient(90deg, #48bb78, #4299e1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      border-left: 4px solid var(--accent-orange);
     }
 
-    .stats-label {
-      color: #94a3b8;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .impact-item {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border-left: 4px solid var(--accent-red);
     }
 
-    .coming-soon {
-      padding: 3rem 1rem;
-      text-align: center;
-      color: #94a3b8;
-      font-style: italic;
+    .rce-sources {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border-left: 4px solid var(--accent-blue);
     }
 
-    footer {
-      margin-top: 50px;
-      padding: 30px 0;
-      text-align: center;
-      color: #94a3b8;
-      border-top: 1px solid #334155;
+    .rce-types {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border-left: 4px solid var(--accent-green);
     }
   </style>
 </head>
@@ -301,20 +241,9 @@
           <li class="nav-item">
             <a class="nav-link active" href="../contact">Contact Us</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Reflected XSS</a></li>
-              <li><a class="dropdown-item" href="#">Stored XSS</a></li>
-              <li><a class="dropdown-item" href="#">DOM XSS</a></li>
-              <li><a class="dropdown-item" href="#">Blind XSS</a></li>
-            </ul>
-          </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control search-box me-2" type="search" placeholder="Search labs..." aria-label="Search">
+        <form class="d-flex" role="search" method="get">
+          <input class="form-control search-box me-2" type="search" placeholder="Search labs..." aria-label="Search" name="search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
@@ -322,93 +251,146 @@
   </nav>
 
   <div class="hero-section">
-    <div class="container text-center">
-      <h1 class="hero-title">RCE Training Platform</h1>
-      <p class="hero-subtitle">Master Remote Code Execution vulnerabilities through hands-on labs designed to challenge your system exploitation skills.</p>
-      
-      <div class="row mt-5">
-        <div class="col-md-3 mb-4">
-          <div class="stats-card">
-            <div class="stats-number">1</div>
-            <div class="stats-label">Lab Available</div>
-          </div>
-        </div>
-        <div class="col-md-3 mb-4">
-          <div class="stats-card">
-            <div class="stats-number">3</div>
-            <div class="stats-label">Difficulty Level</div>
-          </div>
-        </div>
-        <div class="col-md-3 mb-4">
-          <div class="stats-card">
-            <div class="stats-number">100%</div>
-            <div class="stats-label">Hands-On</div>
-          </div>
-        </div>
-        <div class="col-md-3 mb-4">
-          <div class="stats-card">
-            <div class="stats-number">RCE</div>
-            <div class="stats-label">Focus Area</div>
-          </div>
-        </div>
-      </div>
+    <div class="container">
+      <h1 class="hero-title">RCE Bootcamp</h1>
+      <p class="hero-subtitle">Master Remote Code Execution vulnerabilities and their exploitation techniques</p>
     </div>
   </div>
 
   <div class="container mb-5">
-
-    <div class="category-card">
-      <div class="category-header">
-        <div class="category-icon">⚡</div>
-        <h3 class="category-title">Basic RCE Challenges</h3>
-        <p class="category-desc">Start with fundamental Remote Code Execution vulnerabilities and learn to execute commands on target systems.</p>
-      </div>
-      <ul class="lab-list">
-        <li class="single-lab-highlight">
-          <span class="lab-number">1</span>
-          <a href="1" class="lab-link">Lab 1: Test Remote Code Execution vulnerabilities with direct command execution</a>
-          <span class="difficulty-badge badge-low">Low</span>
-        </li>
-      </ul>
+    <div class="section-title">
+      <i class="bi bi-arrow-right-circle me-2"></i>Low Difficulty
+      <span class="difficulty-badge bg-success ms-3">Beginner</span>
     </div>
+    <ul class="lab-list">
+      <li>
+        <a href="1.php" class="lab-link">
+          <div>
+            <i class="bi bi-terminal me-2 lab-icon"></i>
+            <strong>Lab 1:</strong> Basic Command Injection
+          </div>
+          <i class="bi bi-chevron-right lab-icon"></i>
+        </a>
+      </li>
+    </ul>
 
-    <div class="category-card">
-      <div class="category-header">
-        <div class="category-icon">🛡️</div>
-        <h3 class="category-title">Advanced RCE Challenges</h3>
-        <p class="category-desc">Coming soon - Advanced command injection techniques and filter bypass methods.</p>
+    <div class="section-title">
+      <i class="bi bi-arrow-right-circle me-2"></i>Medium Difficulty
+      <span class="difficulty-badge bg-warning text-dark ms-3">Intermediate</span>
+    </div>
+    <ul class="lab-list">
+      <li>
+        <a href="2.php" class="lab-link">
+          <div>
+            <i class="bi bi-upload me-2 lab-icon"></i>
+            <strong>Lab 2:</strong> File Upload RCE
+          </div>
+          <i class="bi bi-chevron-right lab-icon"></i>
+        </a>
+      </li>
+      <li>
+        <a href="3.php" class="lab-link">
+          <div>
+            <i class="bi bi-code-square me-2 lab-icon"></i>
+            <strong>Lab 3:</strong> Deserialization RCE
+          </div>
+          <i class="bi bi-chevron-right lab-icon"></i>
+        </a>
+      </li>
+    </ul>
+
+    <div class="section-title">
+      <i class="bi bi-arrow-right-circle me-2"></i>High Difficulty
+      <span class="difficulty-badge bg-danger ms-3">Advanced</span>
+    </div>
+    <ul class="lab-list">
+      <li>
+        <a href="4.php" class="lab-link">
+          <div>
+            <i class="bi bi-file-code me-2 lab-icon"></i>
+            <strong>Lab 4:</strong> Template Injection RCE
+          </div>
+          <i class="bi bi-chevron-right lab-icon"></i>
+        </a>
+      </li>
+      <li>
+        <a href="5.php" class="lab-link">
+          <div>
+            <i class="bi bi-shield-exclamation me-2 lab-icon"></i>
+            <strong>Lab 5:</strong> Advanced Filter Bypass RCE
+          </div>
+          <i class="bi bi-chevron-right lab-icon"></i>
+        </a>
+      </li>
+    </ul>
+
+    <div class="info-card">
+      <h3 class="info-title">
+        <i class="bi bi-info-circle me-2"></i>About RCE Vulnerabilities
+      </h3>
+      <p>Remote Code Execution (RCE) vulnerabilities occur when an application allows attackers to execute arbitrary code on the server. This is one of the most critical security vulnerabilities as it can lead to complete system compromise.</p>
+      
+      <h5 class="mt-4 mb-3">
+        <i class="bi bi-bug me-2"></i>Common RCE Sources
+      </h5>
+      <div class="rce-sources">
+        <strong><i class="bi bi-terminal me-2"></i>Command Parameters:</strong> <code>cmd</code>, <code>command</code>, <code>exec</code>, <code>system</code>
       </div>
-      <div class="coming-soon">
-        <i class="bi bi-tools display-4 mb-3"></i>
-        <h4>Coming Soon</h4>
-        <p>Advanced RCE labs are currently in development</p>
+      <div class="rce-sources">
+        <strong><i class="bi bi-upload me-2"></i>File Upload:</strong> <code>file</code>, <code>upload</code>, <code>attachment</code>, <code>image</code>
+      </div>
+      <div class="rce-sources">
+        <strong><i class="bi bi-code-square me-2"></i>Serialization:</strong> <code>data</code>, <code>serialize</code>, <code>unserialize</code>
+      </div>
+      <div class="rce-sources">
+        <strong><i class="bi bi-file-code me-2"></i>Template Parameters:</strong> <code>template</code>, <code>view</code>, <code>layout</code>
+      </div>
+      <div class="rce-sources">
+        <strong><i class="bi bi-database me-2"></i>Database Queries:</strong> <code>query</code>, <code>sql</code>, <code>search</code>
+      </div>
+      
+      <h5 class="mt-4 mb-3">
+        <i class="bi bi-exclamation-triangle me-2"></i>Common RCE Types
+      </h5>
+      <div class="rce-types">
+        <strong><i class="bi bi-terminal me-2"></i>Command Injection:</strong> <code>system()</code>, <code>exec()</code>, <code>shell_exec()</code>, <code>passthru()</code>
+      </div>
+      <div class="rce-types">
+        <strong><i class="bi bi-upload me-2"></i>File Upload:</strong> Malicious file uploads, path traversal, file inclusion
+      </div>
+      <div class="rce-types">
+        <strong><i class="bi bi-code-square me-2"></i>Deserialization:</strong> <code>unserialize()</code>, <code>pickle.loads()</code>, <code>ObjectInputStream</code>
+      </div>
+      <div class="rce-types">
+        <strong><i class="bi bi-file-code me-2"></i>Template Injection:</strong> <code>eval()</code>, <code>render()</code>, <code>template()</code>
+      </div>
+      <div class="rce-types">
+        <strong><i class="bi bi-database me-2"></i>SQL Injection:</strong> <code>UNION</code>, <code>SELECT</code>, <code>INTO OUTFILE</code>
+      </div>
+      
+      <h5 class="mt-4 mb-3">
+        <i class="bi bi-exclamation-triangle me-2"></i>Real-World Impact
+      </h5>
+      <div class="impact-item">
+        <i class="bi bi-server me-2"></i>Complete server compromise and control
+      </div>
+      <div class="impact-item">
+        <i class="bi bi-database me-2"></i>Database access and data exfiltration
+      </div>
+      <div class="impact-item">
+        <i class="bi bi-file-earmark me-2"></i>File system access and manipulation
+      </div>
+      <div class="impact-item">
+        <i class="bi bi-arrow-left-right me-2"></i>Network access and lateral movement
+      </div>
+      <div class="impact-item">
+        <i class="bi bi-shield-x me-2"></i>Bypassing all security controls
+      </div>
+      <div class="impact-item">
+        <i class="bi bi-exclamation-triangle me-2"></i>Privilege escalation and persistence
       </div>
     </div>
-
-    <div class="category-card">
-      <div class="category-header">
-        <div class="category-icon">🚩</div>
-        <h3 class="category-title">Expert RCE Challenges</h3>
-        <p class="category-desc">Coming soon - Complex scenarios with multiple layers of protection and advanced exploitation techniques.</p>
-      </div>
-      <div class="coming-soon">
-        <i class="bi bi-tools display-4 mb-3"></i>
-        <h4>Coming Soon</h4>
-        <p>Expert RCE labs are currently in development</p>
-      </div>
-    </div>
-
-      </div>
-    </div>
-
   </div>
-
-  <footer>
-    <div class="container">
-      <p>© 2025 KrazePlanetLabs - Remote Code Execution Training Platform. All rights reserved.</p>
-      <p class="mb-0">Designed for educational purposes to enhance web application security skills.</p>
-    </div>
-  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"

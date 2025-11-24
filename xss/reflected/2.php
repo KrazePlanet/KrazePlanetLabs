@@ -242,17 +242,6 @@ if(isset($_GET["fname"]) && isset($_GET["lname"])){
           <li class="nav-item">
             <a class="nav-link active" href="../../contact">Contact Us</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Categories
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Reflected XSS</a></li>
-              <li><a class="dropdown-item" href="#">Stored XSS</a></li>
-              <li><a class="dropdown-item" href="#">DOM XSS</a></li>
-              <li><a class="dropdown-item" href="#">Blind XSS</a></li>
-            </ul>
-          </li>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control search-box me-2" type="search" placeholder="Search labs..." aria-label="Search">
