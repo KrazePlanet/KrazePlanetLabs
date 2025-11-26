@@ -6,6 +6,10 @@
 2. clone this repo in C:\xampp\htdocs
 
 sudo sed -i 's/Require local/Require all granted/g' /opt/lampp/etc/extra/httpd-xampp.conf
+
+mysql -u root --socket=/opt/lampp/var/mysql/mysql.sock -e "DROP DATABASE IF EXISTS KrazePlanetLabs_DB; CREATE DATABASE KrazePlanetLabs_DB;"
+
+mysql -u root --socket=/opt/lampp/var/mysql/mysql.sock KrazePlanetLabs_DB < <(cat /opt/lampp/htdocs/KrazePlanetLabs/sqli/*/*.sql)
 ```
 
  ## Website UI
