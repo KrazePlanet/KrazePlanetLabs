@@ -1,0 +1,1 @@
+$ip=(wsl hostname -I).Trim().Split(' ')[0]; $hosts="$env:SystemRoot\System32\drivers\etc\hosts"; $content=Get-Content $hosts | Where-Object {$_ -notmatch 'kzlabs\.com'}; $content += "$ip kzlabs.com","$ip www.kzlabs.com"; Set-Content $hosts $content

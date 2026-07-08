@@ -219,10 +219,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" href="about">About</a>
+            <a class="nav-link active" href="about.php">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="contact">Contact Us</a>
+            <a class="nav-link active" href="contact.php">Contact Us</a>
           </li>
         </ul>
         <form class="d-flex" role="search">
@@ -308,8 +308,7 @@
 
   <footer>
     <div class="container">
-      <p>© 2023 KrazePlanetLabs - Security Training Platform. All rights reserved.</p>
-      <p class="mb-0">Designed for educational purposes to enhance cybersecurity skills.</p>
+      <p>© 2026 KrazePlanet. All rights reserved.</p>
     </div>
   </footer>
 
