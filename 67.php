@@ -1,15 +1,22 @@
 <?php
 // Lab 67 — Reflected DOM XSS via URL + prettyPhoto Hash Chain — Starbucks UK
 // Platform: www.starbucks.co.uk | HackerOne Report #396493
-// Vulnerability (2-issue chain):
-//   Issue 1: ?slug= reflected unsanitized into <link rel="canonical" href="...">
-//            in <head> — attacker injects onclick="confirm(domain)" via %22
-//   Issue 2: prettyPhoto JS reads #!hashRel/hashIndex → builds jQuery selector
-//            → trigger("click"). When hashIndex=NaN, simulated old-jQuery bug
-//            fires click on ALL elements — including the canonical <link>
-// Exploit: 67.php?slug=x%22+onclick%3D%22confirm(document.domain)%22#!'\,\*\,/x
+// Vulnerability (2-issue chain — exactly as reported by bayotop):
+//   Issue 1 (unfixed since #252908): slug reflected into <link rel="canonical">
+//     href without sanitization — double URL encoding (%2522 → %22 → ")
+//     achieves HTML attribute injection: onclick="confirm(document.domain)"
+//   Issue 2: prettyPhoto JS reads #!hash from URL, builds jQuery selector
+//     a[rel^='hashRel']:eq(hashIndex) and calls .trigger("click"). Backslash
+//     is NOT escaped in the sanitization regex. Crafted hashRel produces
+//     a malformed selector; old jQuery's eq(NaN) bug fires click on ALL
+//     elements — including the <link> with the injected onclick.
+// Exploit: 67.php?slug=anything%2522onclick=%2522confirm(document.domain)#!'\,\*\,/1
+//   Firefox/Edge: XSS fires. Chrome blocks via XSS Auditor as noted in report.
+//
+// Note: double urldecode() mirrors the real server's path-processing behaviour.
 
-$slug = isset($_GET['slug']) ? $_GET['slug'] : 'egift-holiday-2018';
+$slug_raw = isset($_GET['slug']) ? $_GET['slug'] : 'egift-holiday-2018';
+$slug     = urldecode($slug_raw);  // second decode: %22 → " — enables attribute break-out
 ?>
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -18,9 +25,10 @@ $slug = isset($_GET['slug']) ? $_GET['slug'] : 'egift-holiday-2018';
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thank You for Your Order | Starbucks eGift</title>
 
-<!-- ⚠ VULNERABLE: $slug echoed into href without sanitization
-     Inject: ?slug=x" onclick="confirm(document.domain)"
-     Result: <link rel="canonical" href="...x" onclick="confirm(document.domain)"> -->
+<!-- ⚠ VULNERABLE: $slug echoed into href without htmlspecialchars().
+     Double-encoding (%2522 → %22 → ") achieves attribute injection.
+     Inject: ?slug=anything%2522onclick=%2522confirm(document.domain)
+     Result: <link rel="canonical" href="...anything"onclick="confirm(document.domain)"> -->
 <link rel="canonical" href="https://www.starbucks.co.uk/shop/card/egift/thank-you/<?php echo $slug; ?>">
 
 <style>
@@ -279,20 +287,25 @@ body{font-family:'Helvetica Neue',Arial,sans-serif;background:#f9f6f2;color:#1e3
   </div>
 </div>
 
-<!-- jQuery (required by prettyPhoto, as on the real Starbucks page) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- jQuery 1.x (old jQuery's eq(NaN) bug matches ALL elements — essential to the exploit) -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <script>
 // ============================================================
 //  Starbucks UK shop_js — prettyPhoto module
-//  Mirrors the vulnerable code from:
-//  https://www.starbucks.com/static/resource/shop_js/676938998_en-US
+//  Exact vulnerable code from the real report (with minor
+//  variable renames for clarity).
 //
-//  Issue 2: Reads window.location.href for #! hash fragment,
-//  parses hashRel and hashIndex, builds jQuery selector, and
-//  calls .trigger("click"). When hashIndex is NaN (old jQuery
-//  eq(NaN) bug), click fires on ALL elements — including the
-//  <link rel="canonical"> in <head> which has the injected onclick.
+//  Source (report #396493):
+//    https://www.starbucks.com/static/resource/shop_js/676938998_en-US
+//
+//  Issue 1: slug reflected into <link rel="canonical"> href
+//           with double-decode allowing onclick injection.
+//  Issue 2: prettyPhoto reads #!hash, builds jQuery selector
+//           a[rel^='hashRel']:eq(hashIndex).trigger("click").
+//           Backslash is NOT escaped in sanitization; crafted
+//           hashRel produces invalid selector, and old jQuery's
+//           eq(NaN) → matches ALL elements.
 // ============================================================
 
 // ── Gallery lightbox (normal prettyPhoto behaviour) ────────────────────────
@@ -307,7 +320,7 @@ $("a[rel^='prettyPhoto']").on("click", function(e) {
 });
 
 // ── prettyPhoto hash-based gallery trigger ─────────────────────────────────
-// Original function d() from the real Starbucks JS:
+// Original function d() from the real Starbucks JS (report #396493):
 function d() {
     var url     = location.href;
     var hashtag = (url.indexOf("#!") != -1)
@@ -321,29 +334,25 @@ var hashIndex = d();
 if (hashIndex !== false) {
     var hashRel = hashIndex;
 
-    // Split on "/" — hashIndex gets the part after, hashRel gets before
+    // Split on "/" — hashRel gets the part before, hashIndex after
     hashIndex = hashIndex.substring(hashIndex.indexOf("/") + 1, hashIndex.length - 1);
     hashRel   = hashRel.substring(0, hashRel.indexOf("/"));
 
-    // Parse index (produces NaN for non-numeric or empty strings)
+    // Parse numeric index (non-numeric → NaN)
     hashIndex = parseInt(hashIndex);
 
-    // Sanitize hashRel — escape special chars (\ is NOT escaped — key to exploit)
+    // Sanitize hashRel — escape jQuery/CSS special chars with "\"
+    // ⚠ NOTE: Backslash (\) is NOT in the character class, so it is
+    //   NOT escaped. This is the key flaw: attacker-supplied backslashes
+    //   survive sanitization and break the resulting selector syntax.
     hashRel = hashRel.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/])/g, "\\$1");
 
     setTimeout(function() {
-        if (isNaN(hashIndex)) {
-            // ⚠ Simulates old jQuery eq(NaN) bug:
-            // In the affected jQuery version, :eq(NaN) returns ALL matched
-            // elements rather than none. Here we replicate that behaviour —
-            // trigger("click") fires on EVERY element in the document,
-            // including the <link rel="canonical"> in <head> which now
-            // carries the injected onclick="confirm(document.domain)" attribute.
-            $("*").trigger("click");
-        } else {
-            // Normal prettyPhoto behaviour: open gallery item at hashIndex
-            $("a[rel^='" + hashRel + "']:eq(" + hashIndex + ")").trigger("click");
-        }
+        // In old jQuery (1.x), :eq(NaN) matches ALL elements instead of
+        // none. This causes .trigger("click") to fire on every element in
+        // the document, including the <link rel="canonical"> in <head>
+        // which carries the attacker's injected onclick attribute.
+        $("a[rel^='" + hashRel + "']:eq(" + hashIndex + ")").trigger("click");
     }, 50);
 }
 </script>

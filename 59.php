@@ -113,27 +113,6 @@ $comments = [
             min-height: 100vh;
             font-size: 14px;
         }
-
-        /* ── Lab top bar ── */
-        .lab-topbar {
-            background: linear-gradient(90deg, #0f172a 0%, #1e1b4b 100%);
-            padding: 0.45rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.72rem;
-            color: #94a3b8;
-            border-bottom: 2px solid var(--reddit-orange);
-        }
-        .lab-topbar a {
-            color: #48bb78;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 600;
-        }
-        .lab-topbar a:hover { color: #68d391; }
         .lab-badge-real {
             background: linear-gradient(90deg, #ff4500, #ff6534);
             color: #fff;
@@ -486,38 +465,6 @@ $comments = [
             width: 100%;
             margin-bottom: 0.5rem;
         }
-
-        /* ── Lab info box ── */
-        .lab-info-box {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            border: 1px solid #334155;
-            border-left: 4px solid var(--reddit-orange);
-            border-radius: 8px;
-            padding: 1.1rem 1.25rem;
-            margin-top: 1rem;
-            color: #e2e8f0;
-        }
-        .lab-info-box h4 {
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #fb923c;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        .lab-info-box p { font-size: 0.82rem; color: #94a3b8; line-height: 1.65; }
-        .lab-info-box code {
-            background: rgba(255,255,255,0.08);
-            padding: 0.1rem 0.35rem;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.75rem;
-            color: #7dd3fc;
-            word-break: break-all;
-        }
         .lab-meta-row {
             display: flex;
             flex-wrap: wrap;
@@ -549,14 +496,6 @@ $comments = [
     </style>
 </head>
 <body>
-
-    <!-- Lab top bar -->
-    <div class="lab-topbar">
-        <a href="index.php">
-            <i class="bi bi-arrow-left"></i> Back to Labs
-        </a>
-        <span class="lab-badge-real">HackerOne #1549206 &mdash; Reddit &mdash; $5,000 Bounty</span>
-    </div>
 
     <!-- Site header -->
     <header class="site-header">
@@ -668,33 +607,6 @@ $comments = [
                     <i class="bi bi-chat-square-dots"></i>
                     See More Comments (1,832 remaining)
                 </button>
-            </div>
-
-            <!-- Lab info box -->
-            <div class="lab-info-box">
-                <h4><i class="bi bi-bug-fill"></i> Real World Lab — What to Find</h4>
-                <p>
-                    This page simulates Reddit's Shreddit API comments endpoint.<br>
-                    Access it using the real URL path pattern:<br><br>
-                    <code><?php echo htmlspecialchars($_SERVER['SCRIPT_NAME']); ?>/svc/shreddit/api/comments/askreddit/POST_ID/t1_COMMENT_ID</code><br><br>
-                    The <code>POST_ID</code> path segment is reflected raw in an
-                    <strong style="color:#fbbf24;">unquoted <code>id</code> attribute</strong> on the
-                    "See More Comments" button at the bottom of this page.
-                    Unlike Labs 56–58, there are <strong style="color:#fbbf24;">no quotes to break out of</strong> —
-                    a single <strong style="color:#fbbf24;">space character</strong> (<code>%20</code>) is
-                    enough to inject a new attribute.<br><br>
-                    The XSS fires on <strong style="color:#fbbf24;">mouseover</strong> — hover over the button after injecting.<br><br>
-                    Payload: <code>t3_u9po1l%20onmouseover=alert(document.domain)%20y=</code>
-                </p>
-                <div class="lab-meta-row">
-                    <div class="lab-meta-item"><strong>Platform:</strong> HackerOne</div>
-                    <div class="lab-meta-item"><strong>Report:</strong> #1549206</div>
-                    <div class="lab-meta-item"><strong>Target:</strong> sh.reddit.com</div>
-                    <div class="lab-meta-item"><strong>Severity:</strong> High (7–8.9)</div>
-                    <div class="lab-meta-item"><strong>Bounty:</strong> $5,000</div>
-                    <div class="lab-meta-item"><strong>Researcher:</strong> abhiramsita</div>
-                    <div class="lab-meta-item"><strong>Status:</strong> Resolved (May 2022)</div>
-                </div>
             </div>
 
         </div>

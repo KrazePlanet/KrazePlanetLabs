@@ -86,29 +86,6 @@ $unread_count = count(array_filter($messages, fn($m) => $m['unread']));
             max-width: 480px;
             margin: 0 auto;
         }
-
-        /* ── Lab top bar ── */
-        .lab-topbar {
-            background: linear-gradient(90deg, #0f172a 0%, #1e1b4b 100%);
-            padding: 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.7rem;
-            color: #94a3b8;
-            border-bottom: 2px solid var(--imgur-green);
-            max-width: 100%;
-        }
-        .lab-topbar a {
-            color: #48bb78;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-weight: 600;
-            font-size: 0.72rem;
-        }
-        .lab-topbar a:hover { color: #68d391; }
         .lab-badge-real {
             background: linear-gradient(90deg, #1bb76e, #159957);
             color: #fff;
@@ -355,39 +332,6 @@ $unread_count = count(array_filter($messages, fn($m) => $m['unread']));
             line-height: 14px;
             text-align: center;
         }
-
-        /* ── Lab info box ── */
-        .lab-info-box {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            border: 1px solid #334155;
-            border-left: 4px solid var(--imgur-green);
-            border-radius: 8px;
-            padding: 1.1rem 1.25rem;
-            margin: 1rem;
-            margin-bottom: 6rem;
-            color: #e2e8f0;
-        }
-        .lab-info-box h4 {
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #4ade80;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        .lab-info-box p { font-size: 0.8rem; color: #94a3b8; line-height: 1.6; }
-        .lab-info-box code {
-            background: rgba(255,255,255,0.08);
-            padding: 0.1rem 0.35rem;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.75rem;
-            color: #7dd3fc;
-            word-break: break-all;
-        }
         .lab-meta-row {
             display: flex;
             flex-wrap: wrap;
@@ -401,14 +345,6 @@ $unread_count = count(array_filter($messages, fn($m) => $m['unread']));
     </style>
 </head>
 <body>
-
-    <!-- Lab top bar -->
-    <div class="lab-topbar">
-        <a href="index.php">
-            <i class="bi bi-arrow-left"></i> Back to Labs
-        </a>
-        <span class="lab-badge-real">HackerOne #149855 &mdash; Imgur &mdash; Real World</span>
-    </div>
 
     <!-- Mobile top bar -->
     <div class="mobile-topbar">
@@ -470,29 +406,6 @@ $unread_count = count(array_filter($messages, fn($m) => $m['unread']));
             <?php endif; ?>
         </a>
         <?php endforeach; ?>
-    </div>
-
-    <!-- Lab info box -->
-    <div class="lab-info-box">
-        <h4><i class="bi bi-bug-fill"></i> Real World Lab — What to Find</h4>
-        <p>
-            This page simulates Imgur's mobile messaging endpoint.
-            Access it using the <strong style="color:#fbbf24;">URL path</strong> just like the real bug:<br><br>
-            <code>58.php/account/USERNAME/messages</code><br><br>
-            The username segment is reflected raw inside a double-quoted <code>href</code> attribute.
-            Unlike Lab 56 (single-quote breakout), you need a <code>"</code> to escape here.
-            The XSS fires immediately on page load — no click required.<br><br>
-            Try: <code>58.php/account/test/messages</code> first, then craft your payload in the path.
-        </p>
-        <div class="lab-meta-row">
-            <div class="lab-meta-item"><strong>Platform:</strong> HackerOne</div>
-            <div class="lab-meta-item"><strong>Report:</strong> #149855</div>
-            <div class="lab-meta-item"><strong>Target:</strong> m.imgur.com</div>
-            <div class="lab-meta-item"><strong>Severity:</strong> No rating</div>
-            <div class="lab-meta-item"><strong>Bounty:</strong> Paid</div>
-            <div class="lab-meta-item"><strong>Researcher:</strong> logue</div>
-            <div class="lab-meta-item"><strong>Status:</strong> Resolved (Sep 2017)</div>
-        </div>
     </div>
 
     <!-- Compose FAB -->

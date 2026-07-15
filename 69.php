@@ -53,7 +53,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .sidebar-search input{border:none;background:transparent;font-size:.74rem;color:#1a2a4a;outline:none;flex:1;font-family:inherit;}
 .sidebar-search input::placeholder{color:#b0bdd0;}
 .sidebar-section{padding:10px 16px 4px;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#b0bdd0;}
-.card-item{display:flex;align-items:center;gap:10px;padding:9px 16px;cursor:pointer;border-left:3px solid transparent;transition:background .12s;}
+.card-item{display:flex;align-items:center;gap:10px;padding:9px 16px;cursor:pointer;border-left:3px solid transparent;transition:background .12s;text-decoration:none;color:inherit;}
 .card-item:hover{background:#f5f7fa;}
 .card-item.active{background:#eef3fb;border-left-color:#1b3a6b;}
 .card-thumb{width:34px;height:28px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
@@ -153,55 +153,55 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       </div>
     </div>
     <div class="sidebar-section">Fujitsu Collection</div>
-    <div class="card-item active">
+    <a href="?player/attach.html" class="card-item active">
       <div class="card-thumb" style="background:#eef3fb;">📄</div>
       <div class="card-info">
         <div class="card-name">FM3V2 Player</div>
         <div class="card-meta">attach.html · 229 B</div>
       </div>
       <span class="card-badge">HTML</span>
-    </div>
-    <div class="card-item">
+    </a>
+    <a href="?demo_v2.mp4" class="card-item">
       <div class="card-thumb" style="background:#fff4f0;">🎬</div>
       <div class="card-info">
         <div class="card-name">Product Demo</div>
         <div class="card-meta">demo_v2.mp4 · 14.2 MB</div>
       </div>
       <span class="card-badge">MP4</span>
-    </div>
-    <div class="card-item">
+    </a>
+    <a href="?datasheet_q3.pdf" class="card-item">
       <div class="card-thumb" style="background:#f0fdf4;">📊</div>
       <div class="card-info">
         <div class="card-name">Q3 Data Sheet</div>
         <div class="card-meta">datasheet_q3.pdf · 1.8 MB</div>
       </div>
       <span class="card-badge">PDF</span>
-    </div>
-    <div class="card-item">
+    </a>
+    <a href="?spec_rev2.docx" class="card-item">
       <div class="card-thumb" style="background:#fffbeb;">📋</div>
       <div class="card-info">
         <div class="card-name">Spec Sheet Rev2</div>
         <div class="card-meta">spec_rev2.docx · 340 KB</div>
       </div>
       <span class="card-badge">DOC</span>
-    </div>
+    </a>
     <div class="sidebar-section">Informatica Assets</div>
-    <div class="card-item">
+    <a href="?mdm_2020.pdf" class="card-item">
       <div class="card-thumb" style="background:#fdf0f3;">📈</div>
       <div class="card-info">
         <div class="card-name">MDM Overview</div>
         <div class="card-meta">mdm_2020.pdf · 4.1 MB</div>
       </div>
       <span class="card-badge">PDF</span>
-    </div>
-    <div class="card-item">
+    </a>
+    <a href="?api_ref_v3.html" class="card-item">
       <div class="card-thumb" style="background:#eef3fb;">🗂</div>
       <div class="card-info">
         <div class="card-name">API Reference</div>
         <div class="card-meta">api_ref_v3.html · 88 KB</div>
       </div>
       <span class="card-badge">HTML</span>
-    </div>
+    </a>
   </nav>
 
   <!-- Main viewer -->

@@ -13,7 +13,7 @@ $posts = [
         'author'   => 'PUBG Community Team',
         'excerpt'  => 'This patch brings sweeping changes to Erangel, introduces dynamic weather events, and adjusts vehicle damage across all maps. Read the full notes below.',
         'tags'     => ['Erangel', 'Vehicles', 'Balance'],
-        'img'      => 'https://via.placeholder.com/400x200/1a1a2e/f5c518?text=Patch+28.1',
+        'img'      => 'https://wstatic-prod-boc.krafton.com/common/content/news/20251002/YBBOAv8w.jpg',
     ],
     [
         'id'       => 'winter-event',
@@ -23,7 +23,7 @@ $posts = [
         'author'   => 'PUBG Events Team',
         'excerpt'  => 'Drop into the frozen tundra of Vikendi for the Winter Warfare limited time mode. Exclusive cosmetics and weapon skins available for a limited period.',
         'tags'     => ['Vikendi', 'LTM', 'Event'],
-        'img'      => 'https://via.placeholder.com/400x200/0d1b2a/58a4b0?text=Winter+Warfare',
+        'img'      => 'https://wstatic-prod-boc.krafton.com/common/content/news/20260306/meBA6NLd.jpg',
     ],
     [
         'id'       => 'ranked-season-6',
@@ -33,7 +33,7 @@ $posts = [
         'author'   => 'PUBG Esports',
         'excerpt'  => 'Season 6 of Ranked play is here. New tier rewards, updated matchmaking algorithm, and a revised point system aim to create fairer matches at every level.',
         'tags'     => ['Ranked', 'Season 6', 'Competitive'],
-        'img'      => 'https://via.placeholder.com/400x200/1e3a1e/7bc67e?text=Ranked+S6',
+        'img'      => 'https://wstatic-prod-boc.krafton.com/common/content/news/20240702/MSivBcTY.jpg',
     ],
     [
         'id'       => 'anti-cheat',
@@ -43,7 +43,7 @@ $posts = [
         'author'   => 'PUBG Security Team',
         'excerpt'  => 'Over 1.2 million accounts banned in November. New machine learning detection models are now active on all live servers. We are committed to fair play.',
         'tags'     => ['Anti-Cheat', 'Security', 'Bans'],
-        'img'      => 'https://via.placeholder.com/400x200/2a1a1a/e05c5c?text=Anti-Cheat',
+        'img'      => 'https://wstatic-prod-boc.krafton.com/common/content/news/20241008/DtryFQfy.jpg',
     ],
     [
         'id'       => 'weapon-mastery',
@@ -53,7 +53,7 @@ $posts = [
         'author'   => 'PUBG Dev Team',
         'excerpt'  => 'Earn XP for every weapon you use and unlock exclusive cosmetic rewards. The expanded Weapon Mastery system now covers all 40+ weapons in the game.',
         'tags'     => ['Weapons', 'Mastery', 'Cosmetics'],
-        'img'      => 'https://via.placeholder.com/400x200/2a1e0f/f5a623?text=Weapon+Mastery',
+        'img'      => 'https://wstatic-prod-boc.krafton.com/common/content/news/20241104/rtkzIW6f.jpg',
     ],
     [
         'id'       => 'survivor-pass',
@@ -63,7 +63,7 @@ $posts = [
         'author'   => 'PUBG Store',
         'excerpt'  => 'The new Survivor Pass includes 90 levels of challenges and rewards, including 2 outfit sets, 3 weapon skins, and the exclusive Snowmobile cosmetic.',
         'tags'     => ['Pass', 'Cosmetics', 'Store'],
-        'img'      => 'https://via.placeholder.com/400x200/112233/5588cc?text=Survivor+Pass',
+        'img'      => 'https://wstatic-prod-boc.krafton.com/common/content/news/20240308/xkUJ99w2.jpg',
     ],
 ];
 
@@ -103,27 +103,6 @@ $category_colors = [
             font-family: 'Segoe UI', Arial, sans-serif;
             min-height: 100vh;
         }
-
-        /* ── Lab top bar ── */
-        .lab-topbar {
-            background: linear-gradient(90deg, #0f172a 0%, #1e1b4b 100%);
-            padding: 0.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: #94a3b8;
-            border-bottom: 2px solid var(--pubg-yellow);
-        }
-        .lab-topbar a {
-            color: #48bb78;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 600;
-        }
-        .lab-topbar a:hover { color: #68d391; }
         .lab-badge-real {
             background: linear-gradient(90deg, #f5c518, #f5a623);
             color: #000;
@@ -392,37 +371,6 @@ $category_colors = [
             padding: 0.1rem 0.4rem;
             border-radius: 2px;
         }
-
-        /* ── Lab info box ── */
-        .lab-info-box {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            border: 1px solid #334155;
-            border-left: 4px solid var(--pubg-yellow);
-            border-radius: 8px;
-            padding: 1.25rem 1.5rem;
-            margin-top: 3rem;
-            color: #e2e8f0;
-        }
-        .lab-info-box h4 {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--pubg-yellow);
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .lab-info-box p { font-size: 0.85rem; color: #94a3b8; line-height: 1.6; }
-        .lab-info-box code {
-            background: rgba(255,255,255,0.08);
-            padding: 0.15rem 0.4rem;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.82rem;
-            color: #7dd3fc;
-        }
         .lab-meta-row {
             display: flex;
             flex-wrap: wrap;
@@ -446,17 +394,6 @@ $category_colors = [
     </style>
 </head>
 <body>
-
-    <!-- Lab top bar -->
-    <div class="lab-topbar">
-        <a href="index.php">
-            <i class="bi bi-arrow-left"></i> Back to Labs
-        </a>
-        <div class="lab-topbar-info">
-            <span class="lab-badge-real">Real World Bug</span>
-            <span>HackerOne #751870 &mdash; PUBG &mdash; Reflected XSS in HTML Attribute &mdash; Low (3.6)</span>
-        </div>
-    </div>
 
     <!-- Site header -->
     <header class="site-header">
@@ -552,31 +489,6 @@ $category_colors = [
                 </div>
             </article>
             <?php endforeach; ?>
-        </div>
-
-        <!-- Lab info box -->
-        <div class="lab-info-box">
-            <h4><i class="bi bi-bug-fill"></i> Real World Lab — What to Find</h4>
-            <p>
-                This page simulates the PUBG community feed endpoint where the <code>?p=</code> GET parameter
-                was vulnerable to reflected XSS. Unlike the previous lab, the injection point is <strong>NOT</strong>
-                inside a JavaScript block — it is inside an <strong style="color:#fbbf24;">HTML attribute</strong>.
-                <br><br>
-                The search input is safely escaped with <code>htmlspecialchars</code> — but the same parameter
-                is reflected elsewhere on the page without escaping.
-                <strong style="color:#fbbf24;">View the page source</strong> and find it.
-                To exploit, you need to break out of the attribute using <code>'&gt;</code>, then inject an HTML tag.
-                <br><br>
-                Hint: <code>'&gt;&lt;img src=a onerror=alert(document.cookie)&gt;</code>
-            </p>
-            <div class="lab-meta-row">
-                <div class="lab-meta-item"><strong>Platform:</strong> HackerOne</div>
-                <div class="lab-meta-item"><strong>Report:</strong> #751870</div>
-                <div class="lab-meta-item"><strong>Target:</strong> PUBG (pubg.com)</div>
-                <div class="lab-meta-item"><strong>Severity:</strong> Low (3.6)</div>
-                <div class="lab-meta-item"><strong>Researcher:</strong> 0xfabiof</div>
-                <div class="lab-meta-item"><strong>Status:</strong> Resolved (Dec 2019)</div>
-            </div>
         </div>
 
     </div>

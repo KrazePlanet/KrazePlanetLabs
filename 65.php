@@ -6,6 +6,9 @@
 //   into jQuery .append() as part of an href="..." string — breaks out of attribute.
 // Exploit: 65.php?lever-%22%3E%3Cimg+src%3Dx+onerror%3Dalert(document.domain)%3E
 //   OR with literal chars: 65.php?lever-"><img+src%3Dx+onerror%3Dalert(document.domain)>
+//
+// Discovery: click any nav link, CTA button ("Open roles" / "See open positions"), or
+//   team filter — all of them add ?lever-<value> to the URL so students find the param.
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,14 +119,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <span class="nav-logo-text">HackerOne</span>
     </a>
     <div class="nav-links">
-      <a href="#" class="nav-link">Hackers</a>
-      <a href="#" class="nav-link">Programs</a>
-      <a href="#" class="nav-link">Resources</a>
-      <a href="#" class="nav-link">Company</a>
+      <a href="?lever-hackers" class="nav-link">Hackers</a>
+      <a href="?lever-programs" class="nav-link">Programs</a>
+      <a href="?lever-resources" class="nav-link">Resources</a>
+      <a href="?lever-company" class="nav-link">Company</a>
       <a href="#" class="nav-link active">Careers</a>
     </div>
     <div class="nav-right">
-      <a href="#open-roles" class="nav-btn">Open roles</a>
+      <a href="?lever-apply#open-roles" class="nav-btn">Open roles</a>
     </div>
   </div>
 </nav>
@@ -134,7 +137,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="hero-eyebrow">🌍 We're hiring worldwide</div>
     <h1>Shape the future of<br><span>security</span></h1>
     <p>Join a team of hackers, builders, and dreamers on a mission to make the internet a safer place. We're growing fast and looking for the best.</p>
-    <a href="#open-roles" class="hero-cta">
+    <a href="?lever-roles#open-roles" class="hero-cta">
       See open positions
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
     </a>
@@ -342,11 +345,19 @@ jobs.forEach(function(job) {
 // Update count
 $('#jobs-count').text(jobs.length + ' open roles');
 
-// ── Team filter (safe JS — not the vulnerable part) ────────────────────────
+// ── Team filter — also writes lever- tracking param to URL ────────────────
+//  Students discover the ?lever- prefix in the address bar when filtering.
 $('.filter-btn').on('click', function() {
     var team = $(this).data('team');
     $('.filter-btn').removeClass('active');
     $(this).addClass('active');
+
+    // Expose lever- tracking param in the URL so students discover it
+    if (team === 'all') {
+        history.pushState(null, '', window.location.pathname);
+    } else {
+        history.pushState(null, '', '?lever-' + team);
+    }
 
     var visible = 0;
     $('.job-item').each(function() {

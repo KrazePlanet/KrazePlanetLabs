@@ -33,27 +33,6 @@ $safe_return = htmlspecialchars($returnTo, ENT_QUOTES);
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
         }
-
-        /* ── Lab top bar ── */
-        .lab-topbar {
-            background: linear-gradient(90deg, #0f172a 0%, #1e1b4b 100%);
-            padding: 0.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: #94a3b8;
-            border-bottom: 2px solid var(--shopify-green);
-        }
-        .lab-topbar a {
-            color: #48bb78;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 600;
-        }
-        .lab-topbar a:hover { color: #68d391; }
         .lab-badge-real {
             background: linear-gradient(90deg, #008060, #004c3f);
             color: #fff;
@@ -303,37 +282,6 @@ $safe_return = htmlspecialchars($returnTo, ENT_QUOTES);
             justify-content: center;
             gap: 0.3rem;
         }
-
-        /* ── Lab info box ── */
-        .lab-info-box {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            border: 1px solid #334155;
-            border-left: 4px solid var(--shopify-green);
-            border-radius: 8px;
-            padding: 1.25rem 1.5rem;
-            margin-top: 2.5rem;
-            color: #e2e8f0;
-        }
-        .lab-info-box h4 {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #4ade80;
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .lab-info-box p { font-size: 0.85rem; color: #94a3b8; line-height: 1.6; }
-        .lab-info-box code {
-            background: rgba(255,255,255,0.08);
-            padding: 0.15rem 0.4rem;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.82rem;
-            color: #7dd3fc;
-        }
         .lab-meta-row {
             display: flex;
             flex-wrap: wrap;
@@ -359,17 +307,6 @@ $safe_return = htmlspecialchars($returnTo, ENT_QUOTES);
     </style>
 </head>
 <body>
-
-    <!-- Lab top bar -->
-    <div class="lab-topbar">
-        <a href="index.php">
-            <i class="bi bi-arrow-left"></i> Back to Labs
-        </a>
-        <div class="lab-topbar-info">
-            <span class="lab-badge-real">Real World Bug</span>
-            <span>HackerOne #1940245 &mdash; Shopify &mdash; XSS via javascript: URI &mdash; Low (2.4) &mdash; $500 Bounty</span>
-        </div>
-    </div>
 
     <!-- Site header -->
     <header class="site-header">
@@ -401,12 +338,12 @@ $safe_return = htmlspecialchars($returnTo, ENT_QUOTES);
     <!-- Sub nav -->
     <nav class="sub-nav">
         <div class="sub-nav-inner">
-            <a href="#">Getting Started</a>
-            <a href="#">Orders</a>
-            <a href="#">Products</a>
-            <a href="#">Payments</a>
-            <a href="#" class="active">Account</a>
-            <a href="#">Support</a>
+            <a href="?returnTo=https://accounts.shopify.com">Getting Started</a>
+            <a href="?returnTo=https://accounts.shopify.com">Orders</a>
+            <a href="?returnTo=https://accounts.shopify.com">Products</a>
+            <a href="?returnTo=https://accounts.shopify.com">Payments</a>
+            <a href="?returnTo=https://accounts.shopify.com" class="active">Account</a>
+            <a href="?returnTo=https://accounts.shopify.com">Support</a>
         </div>
     </nav>
 
@@ -434,6 +371,9 @@ $safe_return = htmlspecialchars($returnTo, ENT_QUOTES);
                 <p>Your account is missing required information. Please fill in the fields marked with <strong>*</strong> before continuing.</p>
             </div>
 
+            <form onsubmit="alert('Account details saved (demo).'); return false;">
+            <input type="hidden" name="returnTo" value="<?php echo $safe_return; ?>">
+
             <div class="form-row">
                 <div class="form-group">
                     <label>First Name <span class="required-mark">*</span></label>
@@ -458,50 +398,25 @@ $safe_return = htmlspecialchars($returnTo, ENT_QUOTES);
             </div>
 
             <div class="form-actions">
-                <a href="#" class="btn-cancel">Cancel</a>
-
                 <!--
                     VULNERABLE LINE:
-                    $returnTo is echoed into the href WITHOUT any validation.
-                    javascript:alert(document.cookie) as returnTo will execute JS when clicked.
-                    Also enables open redirect: ?returnTo=https://evil.com
+                    $returnTo is echoed raw into the Cancel link's href.
+                    Student discovers this by clicking nav tabs above.
                 -->
-                <a href="<?php echo $returnTo; ?>" class="btn-continue">
-                    Continue <i class="bi bi-arrow-right"></i>
+                <a href="<?php echo $returnTo; ?>" class="btn-cancel">
+                    Cancel &amp; return
                 </a>
+
+                <button type="submit" class="btn-continue" style="border:none;cursor:pointer;">
+                    Save &amp; Continue <i class="bi bi-arrow-right"></i>
+                </button>
             </div>
+            </form>
         </div>
 
         <div class="security-note">
             <i class="bi bi-shield-lock-fill" style="color:var(--shopify-green);"></i>
             <span>Your information is protected by 256-bit SSL encryption</span>
-        </div>
-
-        <!-- Lab info box -->
-        <div class="lab-info-box">
-            <h4><i class="bi bi-bug-fill"></i> Real World Lab — What to Find</h4>
-            <p>
-                This page simulates Shopify's help center account confirmation endpoint.
-                The <code>?returnTo=</code> parameter is intended to redirect users after they confirm their details.
-                <br><br>
-                Unlike the previous labs, there is <strong style="color:#fbbf24;">no HTML to break out of</strong>.
-                The input lands directly as an <code>href</code> value. The question is:
-                what URI schemes does a browser accept in an <code>href</code> attribute?
-                <br><br>
-                Try: <code>?returnTo=javascript:alert(document.cookie)</code> — then click <strong>Continue</strong>.
-                <br><br>
-                <strong style="color:#fbbf24;">Bonus:</strong> The same parameter also enables an Open Redirect.
-                Try: <code>?returnTo=https://evil.com</code> and click Continue.
-            </p>
-            <div class="lab-meta-row">
-                <div class="lab-meta-item"><strong>Platform:</strong> HackerOne</div>
-                <div class="lab-meta-item"><strong>Report:</strong> #1940245</div>
-                <div class="lab-meta-item"><strong>Target:</strong> Shopify (help.shopify.com)</div>
-                <div class="lab-meta-item"><strong>Severity:</strong> Low (2.4)</div>
-                <div class="lab-meta-item"><strong>Bounty:</strong> $500</div>
-                <div class="lab-meta-item"><strong>Researcher:</strong> becfe31193676118ae5073d</div>
-                <div class="lab-meta-item"><strong>Status:</strong> Resolved (May 2023)</div>
-            </div>
         </div>
     </div>
 

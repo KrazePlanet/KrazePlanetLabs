@@ -1455,7 +1455,7 @@
           </a>
         </div>
       </div>
-      <div class="lab-card">
+      <!-- <div class="lab-card">
         <div class="lab-badge">
           <svg viewBox="0 0 24 24"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
           LAB 67
@@ -1478,7 +1478,7 @@
             ACCESS THE LAB
           </a>
         </div>
-      </div>
+      </div> -->
       <div class="lab-card">
         <div class="lab-badge">
           <svg viewBox="0 0 24 24"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>

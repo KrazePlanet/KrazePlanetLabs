@@ -42,27 +42,6 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
             color: var(--eq-text);
             min-height: 100vh;
         }
-
-        /* ── Top lab bar ── */
-        .lab-topbar {
-            background: linear-gradient(90deg, #0f172a 0%, #1e1b4b 100%);
-            padding: 0.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            color: #94a3b8;
-            border-bottom: 2px solid #e31837;
-        }
-        .lab-topbar a {
-            color: #48bb78;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 600;
-        }
-        .lab-topbar a:hover { color: #68d391; }
         .lab-badge-real {
             background: linear-gradient(90deg, #e31837, #f97316);
             color: #fff;
@@ -250,36 +229,6 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
         }
         .topic-chip:hover { background: var(--eq-blue); color: #fff; }
 
-        /* ── Lab info box ── */
-        .lab-info-box {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            border: 1px solid #334155;
-            border-left: 4px solid #e31837;
-            border-radius: 8px;
-            padding: 1.25rem 1.5rem;
-            margin-top: 3rem;
-            color: #e2e8f0;
-        }
-        .lab-info-box h4 {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #f87171;
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .lab-info-box p { font-size: 0.85rem; color: #94a3b8; line-height: 1.6; }
-        .lab-info-box code {
-            background: rgba(255,255,255,0.08);
-            padding: 0.15rem 0.4rem;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.82rem;
-            color: #7dd3fc;
-        }
         .lab-meta-row {
             display: flex;
             flex-wrap: wrap;
@@ -303,17 +252,6 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
     </style>
 </head>
 <body>
-
-    <!-- Lab top bar -->
-    <div class="lab-topbar">
-        <a href="index.php">
-            <i class="bi bi-arrow-left"></i> Back to Labs
-        </a>
-        <div class="lab-topbar-info">
-            <span class="lab-badge-real">Real World Bug</span>
-            <span>HackerOne #1818163 &mdash; Equifax &mdash; Reflected XSS in JS Context &mdash; Medium (5.6)</span>
-        </div>
-    </div>
 
     <!-- Site header (simulated Equifax) -->
     <header>
@@ -389,28 +327,6 @@ if (isset($_GET['search']) && $_GET['search'] !== '') {
                 <a href="?search=lock+unlock" class="topic-chip">Lock &amp; Unlock</a>
             </div>
         </div>
-
-        <!-- Lab info -->
-        <div class="lab-info-box">
-            <h4><i class="bi bi-bug-fill"></i> Real World Lab — What to Find</h4>
-            <p>
-                This page simulates the Equifax Help Center search endpoint vulnerable to reflected XSS.
-                The <code>?search=</code> parameter appears to be correctly handled in the HTML output — but look deeper.
-                <strong style="color:#fbbf24;">View the page source</strong> and search for your input.
-                You will find it reflected a second time, inside a <code>&lt;script&gt;</code> block within a JavaScript analytics call.
-                <br><br>
-                Your goal: trigger <code>alert()</code> without using any HTML tags. You need to escape a <strong>JavaScript string</strong>, not HTML.
-            </p>
-            <div class="lab-meta-row">
-                <div class="lab-meta-item"><strong>Platform:</strong> HackerOne</div>
-                <div class="lab-meta-item"><strong>Report:</strong> #1818163</div>
-                <div class="lab-meta-item"><strong>Target:</strong> Equifax (equifax.com)</div>
-                <div class="lab-meta-item"><strong>Severity:</strong> Medium (5.6)</div>
-                <div class="lab-meta-item"><strong>Researcher:</strong> abdoubouanik</div>
-                <div class="lab-meta-item"><strong>Status:</strong> Resolved (2023)</div>
-            </div>
-        </div>
-    </div>
 
     <footer>
         <p>&copy; 2023 Equifax Inc. &mdash; <a href="#">Privacy Policy</a> &mdash; <a href="#">Terms of Use</a></p>
